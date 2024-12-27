@@ -6,7 +6,6 @@ import Image from "next/image";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import { useRouter } from "next/router";
 import Heros from "../components/Heros";
-import ServicesContent from "../components/services-content";
 import NavbarPage from "../components/NavbarPage";
 import Footer from "../components/Footer";
 import { CSSProperties } from "react";
