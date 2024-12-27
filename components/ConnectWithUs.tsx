@@ -46,29 +46,39 @@ const ConnectWithUs: React.FC<ConnectWithUsType> = ({ className = "" }) => {
     e.preventDefault();
 
     // Validate required fields
-    if (!formData.name || !formData.email) {
-      alert('Please fill in all required fields (Name and Email)');
+    if (!formData.name || !formData.email || !formData.country || !formData.companyName || !formData.position) {
+      alert('Please fill in all required fields');
       return;
     }
 
     try {
+      // Format email body
+      const emailBody = `
+        Name: ${formData.name}
+        Email: ${formData.email}
+        Phone: ${formData.phone || 'Not provided'}
+        Country: ${formData.country}
+        Company: ${formData.companyName}
+        Position: ${formData.position}
+        Message: ${formData.message || 'Not provided'}
+      `;
+
       const response = await fetch('/api/send-email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          subject: `New Contact Form Submission from ${formData.name}`,
+          body: emailBody
+        }),
       });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || 'Failed to send message');
-      }
 
       const data = await response.json();
 
       if (data.success) {
-        alert('Message sent successfully!');
+        alert('Thank you for your message. We will get back to you soon!');
+        // Reset form
         setFormData({
           name: '',
           email: '',
@@ -83,7 +93,7 @@ const ConnectWithUs: React.FC<ConnectWithUsType> = ({ className = "" }) => {
       }
     } catch (error) {
       console.error('Error:', error);
-      alert(error instanceof Error ? error.message : 'Failed to send message');
+      alert('Sorry, there was an error sending your message. Please try again later.');
     }
   };
 
