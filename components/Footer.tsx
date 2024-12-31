@@ -37,7 +37,7 @@ const Footer: NextPage<FooterType> = ({ className = "" }) => {
       <div
         className="w-full flex  justify-between gap-10 max-w-full  flex-wrap
         lg:gap-8 md:gap-10 sm:gap-10
-        max-[450px]:gap-0 footer mq500:flex-col mq500:items-center mq500:gap-5rem"
+        max-[450px]:gap-0 footer mq500:flex-col mq500:items-center mq500:gap-5rem "
       >
         {/* First Column */}
 
@@ -168,8 +168,7 @@ const Footer: NextPage<FooterType> = ({ className = "" }) => {
           src="/divider.svg"
         />
         <div
-          className="w-full flex flex-row items-center justify-center gap-4 
-          sm:flex-col sm:gap-2
+          className="w-full flex flex-row items-center justify-center gap-4
           max-[450px]:text-sm
           max-[450px]:gap-4 mq800:flex-col"
         >
