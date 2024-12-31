@@ -35,13 +35,12 @@ const Footer: NextPage<FooterType> = ({ className = "" }) => {
       ${className}`}
     >
       <div
-        className="w-full flex  justify-between gap-10 max-w-full  flex-wrap
-        lg:gap-8 md:gap-10 sm:gap-10
-        max-[450px]:gap-0 footer mq500:flex-col mq500:items-center mq500:gap-5rem "
+        className="w-full flex  justify-between gap-12 max-w-full  flex-wrap
+        footer mq500:flex-col mq500:items-center mq500:gap-5rem "
       >
         {/* First Column */}
 
-        <div className="flex flex-col items-start justify-start gap-[1.706rem] text-[1rem] text-color-6 w-[20%] min-w-[200px] max-w-full">
+        <div className="flex flex-col items-start justify-start gap-[1.706rem] text-[1rem] text-color-6 w-[20%] min-w-[200px] max-w-full mq500:items-center">
           <Image
             className="w-[12.688rem] h-[1.469rem] relative z-[1] max-w-full"
             loading="lazy"
@@ -51,9 +50,9 @@ const Footer: NextPage<FooterType> = ({ className = "" }) => {
             src="/dt-systems-1.svg"
           />
           <div className="flex flex-col items-start justify-start gap-[1.25rem]">
-            <div className="relative leading-[150%] z-[1] mq500:text-center ">
+            {/* <div className="relative leading-[150%] z-[1] mq500:text-center ">
               Lorem ipsum dolor sit amet consectetur. Aliquam nibh quam
-            </div>
+            </div> */}
             <div
               className="flex flex-row items-center mq500:justify-center w-full gap-[0.737rem] z-[1] text-[0.781rem] text-gray-400 font-inter flex-wrap
             max-[450px]:gap-4  "
@@ -68,7 +67,7 @@ const Footer: NextPage<FooterType> = ({ className = "" }) => {
                   src="/awnode-0dfbe7a0261a000265c522e86775eb316775eb1b.svg"
                 />
               </a>
-              {/* <Image
+              <Image
                 style={{ border: "1px solid gray" }}
                 className="h-[1.8rem] w-[1.8rem] relative rounded-13xl-1"
                 loading="lazy"
@@ -92,36 +91,44 @@ const Footer: NextPage<FooterType> = ({ className = "" }) => {
                 height={32}
                 alt=""
                 src="/awnode-0dfbe7a0261a000265c522e86775eb376775eb1b.svg"
-              /> */}
+              />
             </div>
           </div>
         </div>
 
         {/* Second Column */}
-        {/* <div className="flex flex-col items-start justify-start gap-[1.5rem] min-w-[150px] mq500:items-center">
+        <div className="flex flex-col items-start justify-start gap-[1.5rem]  min-w-[200px] mq500:items-center">
           <div className="relative leading-[1.875rem] font-semibold z-[1]">
             About Us
           </div>
           <div className="flex flex-col items-start justify-start gap-[0.968rem] text-color-6 mq500:items-center">
-            <div className="relative leading-[1.875rem] z-[1]">Leadership Team</div>
-            <a className="[text-decoration:none] relative leading-[1.875rem] text-[inherit] z-[1]">Careers</a>
-            <div className="relative leading-[1.875rem] z-[1]">Partner Network</div>
+            <div className="relative leading-[1.875rem] z-[1]">
+              Leadership Team
+            </div>
+            <a className="[text-decoration:none] relative leading-[1.875rem] text-[inherit] z-[1]">
+              Careers
+            </a>
+            <div className="relative leading-[1.875rem] z-[1]">
+              Partner Network
+            </div>
           </div>
         </div>
 
-        <div className="flex flex-col items-start justify-start gap-[1.5rem] min-w-[150px] mq644:mt-[1rem] mq500:items-center">
+        <div className="flex flex-col items-start justify-start gap-[1.5rem]  min-w-[200px] mq644:mt-[1rem] mq500:items-center">
           <div className="relative leading-[1.875rem] font-semibold z-[1]">
             Resources
           </div>
           <div className="flex flex-col items-start justify-start gap-[1rem] text-color-6 mq500:items-center">
             <div className="relative leading-[1.875rem] z-[1]">Blog</div>
-            <div className="relative leading-[1.875rem] z-[1]">Case Studies</div>
+            <div className="relative leading-[1.875rem] z-[1]">
+              Case Studies
+            </div>
           </div>
-        </div>  */}
+        </div>
 
         {/* Third Column */}
         <div
-          className="flex flex-col items-start justify-start gap-[1.5rem] min-w-[200px] mq644:items-center mq644:mt-[1rem] mq500:ml-[3rem] items-center mq500:ml-[2rem] "
+          className="flex flex-col items-start  justify-start gap-[1.5rem] min-w-[200px] mq500:items-center mq644:mt-[1rem]  "
           style={imgStyle}
         >
           <div className="relative leading-[1.875rem] font-semibold z-[1]">
@@ -145,11 +152,11 @@ const Footer: NextPage<FooterType> = ({ className = "" }) => {
         </div>
 
         {/* Fourth Column */}
-        <div className="flex flex-col items-start justify-start gap-[1.5rem] min-w-[150px] mq644:mt-[1rem] items-center ">
+        <div className="flex flex-col items-start justify-start gap-[1.5rem] min-w-[200px] mq644:mt-[1rem] mq500:items-center">
           <div className="relative leading-[1.875rem] font-semibold z-[1]">
             Address
           </div>
-          <div className="relative leading-[1.875rem] text-color-6 z-[1] text-center">
+          <div className="relative leading-[1.875rem] text-color-6 z-[1] mq500:text-center">
             <p className="m-0">114 Lavender Street</p>
             <p className="m-0">#10-06/07</p>
             <p className="m-0">CT Hub 2</p>
@@ -159,7 +166,7 @@ const Footer: NextPage<FooterType> = ({ className = "" }) => {
       </div>
 
       {/* Footer Divider */}
-      <div className="w-full flex flex-col items-start justify-start gap-[1rem] text-color-6 mq460:ml-[2rem] mq430:ml-[1rem] mq400:ml-[-1rem]">
+      <div className="w-full flex flex-col items-start justify-start gap-[1rem] text-color-6 ">
         <Image
           className="w-full h-[1px] relative z-[1] object-cover"
           width={1300}
@@ -168,8 +175,8 @@ const Footer: NextPage<FooterType> = ({ className = "" }) => {
           src="/divider.svg"
         />
         <div
-          className="w-full flex flex-row items-center justify-center gap-4
-          max-[450px]:text-sm
+          className="w-full flex flex-row items-center justify-between gap-4
+          max-[450px]:text-sm mq800:gap-6
           max-[450px]:gap-4 mq800:flex-col"
         >
           {/* <div className="relative leading-[160%] z-[1] text-center">
@@ -177,6 +184,17 @@ const Footer: NextPage<FooterType> = ({ className = "" }) => {
           </div> */}
           <div className="relative leading-[160%] z-[1] sm:text-sm text-center">
             © Copyright DT-Systems 2024 All Rights Reserved.
+          </div>
+          <div className="flex flex-row items-center justify-center z-[1] mq470:flex-col mq470:gap-3">
+            <a href="" className="no-underline text-color-6 relative after:content-['|'] mq470:after:content-['']  after:mx-2 after:text-color-6">
+              <span>Privacy Policy</span>
+            </a>
+            <a href="" className="no-underline text-color-6 relative after:content-['|'] mq470:after:content-[''] after:mx-2 after:text-color-6">
+              <span>Terms & Conditions</span>
+            </a>
+            <a href="" className="no-underline text-color-6">
+              <span>Disclaimer</span>
+            </a>
           </div>
         </div>
       </div>
