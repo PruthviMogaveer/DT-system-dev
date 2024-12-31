@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 export type ConnectWithUsType = {
   className?: string;
@@ -6,27 +6,24 @@ export type ConnectWithUsType = {
 
 const ConnectWithUs: React.FC<ConnectWithUsType> = ({ className = "" }) => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    country: '',
-    companyName: '',
-    position: '',
-    message: ''
+    name: "",
+    email: "",
+    phone: "",
+    country: "",
+    companyName: "",
+    position: "",
+    message: "",
   });
 
-  const [emailStyle, setEmailStyle] = useState<React.CSSProperties>({ borderBottom: "1px solid gray" });
+  const [emailStyle, setEmailStyle] = useState<React.CSSProperties>({
+    borderBottom: "1px solid gray",
+  });
   useEffect(() => {
     const checkScreen = () => {
       if (window.innerWidth < 800) {
-
         setEmailStyle({ marginTop: "1.5rem", borderBottom: "1px solid gray" });
-
-
       } else {
-
         setEmailStyle({ borderBottom: "1px solid gray" });
-
       }
     };
 
@@ -38,65 +35,72 @@ const ConnectWithUs: React.FC<ConnectWithUsType> = ({ className = "" }) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
-  const handleSubmit = async (e: { preventDefault: () => void; }) => {
+  const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
     // Validate required fields
-    if (!formData.name || !formData.email || !formData.country || !formData.companyName || !formData.position) {
-      alert('Please fill in all required fields');
+    if (
+      !formData.name ||
+      !formData.email ||
+      !formData.country ||
+      !formData.companyName ||
+      !formData.position
+    ) {
+      alert("Please fill in all required fields");
       return;
     }
 
     try {
       // Format email body
-      const emailBody = `
-        Name: ${formData.name}
-        Email: ${formData.email}
-        Phone: ${formData.phone || 'Not provided'}
-        Country: ${formData.country}
-        Company: ${formData.companyName}
-        Position: ${formData.position}
-        Message: ${formData.message || 'Not provided'}
-      `;
+      const emailBody = {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone || "Not provided",
+        country: formData.country,
+        companyName: formData.companyName,
+        position: formData.position,
+        message: formData.message || "Not provided",
+      };
 
-      const response = await fetch('/api/send-email', {
-        method: 'POST',
+      const response = await fetch("/api/send-email", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           subject: `New Contact Form Submission from ${formData.name}`,
-          body: emailBody
+          body: emailBody,
         }),
       });
 
       const data = await response.json();
 
       if (data.success) {
-        alert('Thank you for your message. We will get back to you soon!');
+        alert("Thank you for your message. We will get back to you soon!");
         // Reset form
         setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          country: '',
-          companyName: '',
-          position: '',
-          message: ''
+          name: "",
+          email: "",
+          phone: "",
+          country: "",
+          companyName: "",
+          position: "",
+          message: "",
         });
       } else {
-        throw new Error(data.message || 'Failed to send message');
+        throw new Error(data.message || "Failed to send message");
       }
     } catch (error) {
-      console.error('Error:', error);
-      alert('Sorry, there was an error sending your message. Please try again later.');
+      console.error("Error:", error);
+      alert(
+        "Sorry, there was an error sending your message. Please try again later."
+      );
     }
   };
-
 
   return (
     <div
@@ -121,7 +125,7 @@ const ConnectWithUs: React.FC<ConnectWithUsType> = ({ className = "" }) => {
               className="border-b border-gray-500 pb-3 outline-none text-lg placeholder:text-gray-800 text-muted-foreground opacity-50 text-[17px] border-b border-gray-400"
             />
           </div>
-          <div className="flex flex-col" >
+          <div className="flex flex-col">
             <input
               type="email"
               name="email"
@@ -207,8 +211,8 @@ const ConnectWithUs: React.FC<ConnectWithUsType> = ({ className = "" }) => {
           <span className="mq1050:hidden"> Let's Grow..</span>
         </h2>
         <p className="text-gray-800 mt-6 text-lg leading-relaxed max-w-[70%] w-[60%] opacity-50 mq1050:hidden">
-          We prioritize responding to your inquiries promptly to ensure you receive
-          the assistance you need in a timely manner.
+          We prioritize responding to your inquiries promptly to ensure you
+          receive the assistance you need in a timely manner.
         </p>
       </div>
     </div>

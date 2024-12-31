@@ -10,19 +10,12 @@ export type FooterType = {
 const Footer: NextPage<FooterType> = ({ className = "" }) => {
   const [imgStyle, setImgStyle] = useState<React.CSSProperties>({});
 
-
-
   useEffect(() => {
     const checkScreen = () => {
       if (window.innerWidth < 500) {
-
         setImgStyle({ marginLeft: "-1rem" });
-
-
       } else {
-
         setImgStyle({});
-
       }
     };
 
@@ -41,11 +34,12 @@ const Footer: NextPage<FooterType> = ({ className = "" }) => {
       max-[450px]:pt-10
       ${className}`}
     >
-      <div className="w-full flex  justify-evenly gap-10 max-w-full  flex-wrap
+      <div
+        className="w-full flex  justify-between gap-10 max-w-full  flex-wrap
         lg:gap-8 md:gap-10 sm:gap-10
-        max-[450px]:gap-0 footer mq500:flex-col mq500:items-center mq500:gap-5rem">
-
-        {/* First Column
+        max-[450px]:gap-0 footer mq500:flex-col mq500:items-center mq500:gap-5rem"
+      >
+        {/* First Column */}
 
         <div className="flex flex-col items-start justify-start gap-[1.706rem] text-[1rem] text-color-6 w-[20%] min-w-[200px] max-w-full">
           <Image
@@ -57,20 +51,24 @@ const Footer: NextPage<FooterType> = ({ className = "" }) => {
             src="/dt-systems-1.svg"
           />
           <div className="flex flex-col items-start justify-start gap-[1.25rem]">
-            <div className="relative leading-[150%] z-[1] mq500:text-center">
+            <div className="relative leading-[150%] z-[1] mq500:text-center ">
               Lorem ipsum dolor sit amet consectetur. Aliquam nibh quam
             </div>
-            <div className="flex flex-row items-center gap-[0.737rem] z-[1] text-[0.781rem] text-gray-400 font-inter flex-wrap
-            max-[450px]:gap-4 mq500:ml-[1rem] ">
-              <Image
-                className="h-[2.006rem] w-[2rem] relative rounded-13xl-1"
-                loading="lazy"
-                width={32}
-                height={32}
-                alt=""
-                src="/awnode-0dfbe7a0261a000265c522e86775eb316775eb1b.svg"
-              />
-              <Image
+            <div
+              className="flex flex-row items-center mq500:justify-center w-full gap-[0.737rem] z-[1] text-[0.781rem] text-gray-400 font-inter flex-wrap
+            max-[450px]:gap-4  "
+            >
+              <a href="https://www.linkedin.com/company/dt-systems-asia/">
+                <Image
+                  className="h-[2.006rem] w-[2rem] relative rounded-13xl-1"
+                  loading="lazy"
+                  width={32}
+                  height={32}
+                  alt=""
+                  src="/awnode-0dfbe7a0261a000265c522e86775eb316775eb1b.svg"
+                />
+              </a>
+              {/* <Image
                 style={{ border: "1px solid gray" }}
                 className="h-[1.8rem] w-[1.8rem] relative rounded-13xl-1"
                 loading="lazy"
@@ -94,7 +92,7 @@ const Footer: NextPage<FooterType> = ({ className = "" }) => {
                 height={32}
                 alt=""
                 src="/awnode-0dfbe7a0261a000265c522e86775eb376775eb1b.svg"
-              />
+              /> */}
             </div>
           </div>
         </div>
@@ -121,9 +119,11 @@ const Footer: NextPage<FooterType> = ({ className = "" }) => {
           </div>
         </div>  */}
 
-
         {/* Third Column */}
-        <div className="flex flex-col items-start justify-start gap-[1.5rem] min-w-[200px] mq644:items-center mq644:mt-[1rem] mq500:ml-[3rem] items-center mq500:ml-[2rem] " style={imgStyle}>
+        <div
+          className="flex flex-col items-start justify-start gap-[1.5rem] min-w-[200px] mq644:items-center mq644:mt-[1rem] mq500:ml-[3rem] items-center mq500:ml-[2rem] "
+          style={imgStyle}
+        >
           <div className="relative leading-[1.875rem] font-semibold z-[1]">
             Get in Touch
           </div>
@@ -144,7 +144,6 @@ const Footer: NextPage<FooterType> = ({ className = "" }) => {
           </div>
         </div>
 
-
         {/* Fourth Column */}
         <div className="flex flex-col items-start justify-start gap-[1.5rem] min-w-[150px] mq644:mt-[1rem] items-center ">
           <div className="relative leading-[1.875rem] font-semibold z-[1]">
@@ -157,11 +156,10 @@ const Footer: NextPage<FooterType> = ({ className = "" }) => {
             <p className="m-0">Singapore 338729.</p>
           </div>
         </div>
-
-      </div >
+      </div>
 
       {/* Footer Divider */}
-      < div className="w-full flex flex-col items-start justify-start gap-[1rem] text-color-6 mq460:ml-[2rem] mq430:ml-[1rem] mq400:ml-[-1rem]" >
+      <div className="w-full flex flex-col items-start justify-start gap-[1rem] text-color-6 mq460:ml-[2rem] mq430:ml-[1rem] mq400:ml-[-1rem]">
         <Image
           className="w-full h-[1px] relative z-[1] object-cover"
           width={1300}
@@ -169,21 +167,22 @@ const Footer: NextPage<FooterType> = ({ className = "" }) => {
           alt=""
           src="/divider.svg"
         />
-        <div className="w-full flex flex-row items-center justify-center gap-4 
+        <div
+          className="w-full flex flex-row items-center justify-center gap-4 
           sm:flex-col sm:gap-2
           max-[450px]:text-sm
-          max-[450px]:gap-4 mq800:flex-col">
+          max-[450px]:gap-4 mq800:flex-col"
+        >
           {/* <div className="relative leading-[160%] z-[1] text-center">
             © Copyright TechHarbor2024 All Rights Reserved
           </div> */}
           <div className="relative leading-[160%] z-[1] sm:text-sm text-center">
-            © 2024 by DT-Systems.
+            © Copyright DT-Systems 2024 All Rights Reserved.
           </div>
         </div>
-      </ div>
-    </footer >
+      </div>
+    </footer>
   );
 };
 
 export default Footer;
-
