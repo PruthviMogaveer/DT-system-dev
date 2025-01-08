@@ -97,7 +97,8 @@ const Footer: NextPage<FooterType> = ({ className = "" }) => {
                   src="/awnode-0dfbe7a0261a000265c522e86775eb316775eb1b.svg"
                 />
               </a>
-              <a href="">
+
+              <a href="#">
               <Image
                 className="h-[1.8rem] w-[1.8rem] relative rounded-13xl-1 border-solid border border-slate-300"
                 loading="lazy"
@@ -107,7 +108,7 @@ const Footer: NextPage<FooterType> = ({ className = "" }) => {
                 src="/frame.svg"
               />
               </a>
-              <a href="">
+              <a href="#">
               <Image
                 className="h-[2.006rem] w-[2rem] relative rounded-13xl-1"
                 loading="lazy"
@@ -117,7 +118,7 @@ const Footer: NextPage<FooterType> = ({ className = "" }) => {
                 src="/awnode-0dfbe7a0261a000265c522e86775eb346775eb1b.svg"
               />
               </a>
-              <a href="">
+              <a href="#">
               <Image
                 className="h-[2.006rem] w-[2rem] relative rounded-13xl-1"
                 loading="lazy"
