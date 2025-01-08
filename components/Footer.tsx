@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Image from "next/image";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 export type FooterType = {
   className?: string;
@@ -24,8 +24,34 @@ const Footer: NextPage<FooterType> = ({ className = "" }) => {
     return () => window.removeEventListener("resize", checkScreen);
   }, []);
 
+  const footerAnimation = {
+    initial: { opacity: 0, y: 20 },
+    animate: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  const staggerContainer = {
+    initial: { opacity: 1 },
+    animate: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.1
+      }
+    }
+  };
+
   return (
-    <footer
+    <motion.footer
+      initial="initial"
+      whileInView="animate"
+      viewport={{ once: false, amount: 0.2 }}  // Changed this line
       className={`self-stretch bg-ghostwhite flex flex-col items-start justify-start pt-[5.5rem] px-[4.375rem] pb-[2.812rem] box-border gap-[2.062rem] max-w-full text-left text-[1.125rem] text-gray-300 font-archivo 
       lg:px-8 md:px-6 sm:px-4 
       md:pt-16 sm:pt-12
@@ -34,13 +60,17 @@ const Footer: NextPage<FooterType> = ({ className = "" }) => {
       max-[450px]:pt-10
       ${className}`}
     >
-      <div
+      <motion.div
+        variants={staggerContainer}
         className="w-full flex  justify-between gap-12 max-w-full  flex-wrap
         footer mq500:flex-col mq500:items-center mq500:gap-5rem "
       >
         {/* First Column */}
 
-        <div className="flex flex-col items-start justify-start gap-[1.706rem] text-[1rem] text-color-6 w-[20%] min-w-[200px] max-w-full mq500:items-center">
+        <motion.div 
+          variants={footerAnimation}
+          className="flex flex-col items-start justify-start gap-[1.706rem] text-[1rem] text-color-6 w-[20%] min-w-[200px] max-w-full mq500:items-center"
+        >
           <Image
             className="w-[12.688rem] h-[1.469rem] relative z-[1] max-w-full"
             loading="lazy"
@@ -67,15 +97,17 @@ const Footer: NextPage<FooterType> = ({ className = "" }) => {
                   src="/awnode-0dfbe7a0261a000265c522e86775eb316775eb1b.svg"
                 />
               </a>
+              <a href="">
               <Image
-                style={{ border: "1px solid gray" }}
-                className="h-[1.8rem] w-[1.8rem] relative rounded-13xl-1"
+                className="h-[1.8rem] w-[1.8rem] relative rounded-13xl-1 border-solid border border-slate-300"
                 loading="lazy"
                 width={20}
                 height={20}
                 alt=""
                 src="/frame.svg"
               />
+              </a>
+              <a href="">
               <Image
                 className="h-[2.006rem] w-[2rem] relative rounded-13xl-1"
                 loading="lazy"
@@ -84,6 +116,8 @@ const Footer: NextPage<FooterType> = ({ className = "" }) => {
                 alt=""
                 src="/awnode-0dfbe7a0261a000265c522e86775eb346775eb1b.svg"
               />
+              </a>
+              <a href="">
               <Image
                 className="h-[2.006rem] w-[2rem] relative rounded-13xl-1"
                 loading="lazy"
@@ -92,12 +126,16 @@ const Footer: NextPage<FooterType> = ({ className = "" }) => {
                 alt=""
                 src="/awnode-0dfbe7a0261a000265c522e86775eb376775eb1b.svg"
               />
+              </a>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Second Column */}
-        <div className="flex flex-col items-start justify-start gap-[1.5rem]  min-w-[200px] mq500:items-center">
+        <motion.div 
+          variants={footerAnimation}
+          className="flex flex-col items-start justify-start gap-[1.5rem]  min-w-[200px] mq500:items-center"
+        >
           <div className="relative leading-[1.875rem] font-semibold z-[1]">
             About Us
           </div>
@@ -112,9 +150,13 @@ const Footer: NextPage<FooterType> = ({ className = "" }) => {
               Partner Network
             </div>
           </div>
-        </div>
+        </motion.div>
 
-        <div className="flex flex-col items-start justify-start gap-[1.5rem]  min-w-[200px] mq644:mt-[1rem] mq500:items-center">
+        {/* Resources Column */}
+        <motion.div 
+          variants={footerAnimation}
+          className="flex flex-col items-start justify-start gap-[1.5rem] min-w-[200px] mq644:mt-[1rem] mq500:items-center"
+        >
           <div className="relative leading-[1.875rem] font-semibold z-[1]">
             Resources
           </div>
@@ -124,10 +166,11 @@ const Footer: NextPage<FooterType> = ({ className = "" }) => {
               Case Studies
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Third Column */}
-        <div
+        <motion.div 
+          variants={footerAnimation}
           className="flex flex-col items-start  justify-start gap-[1.5rem] min-w-[200px] mq500:items-center mq644:mt-[1rem]  "
           style={imgStyle}
         >
@@ -149,10 +192,13 @@ const Footer: NextPage<FooterType> = ({ className = "" }) => {
               info@dt-systems.asia
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Fourth Column */}
-        <div className="flex flex-col items-start justify-start gap-[1.5rem] min-w-[200px] mq644:mt-[1rem] mq500:items-center">
+        <motion.div 
+          variants={footerAnimation}
+          className="flex flex-col items-start justify-start gap-[1.5rem] min-w-[200px] mq644:mt-[1rem] mq500:items-center"
+        >
           <div className="relative leading-[1.875rem] font-semibold z-[1]">
             Address
           </div>
@@ -162,11 +208,14 @@ const Footer: NextPage<FooterType> = ({ className = "" }) => {
             <p className="m-0">CT Hub 2</p>
             <p className="m-0">Singapore 338729.</p>
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
       {/* Footer Divider */}
-      <div className="w-full flex flex-col items-start justify-start gap-[1rem] text-color-6 ">
+      <motion.div 
+        variants={footerAnimation}
+        className="w-full flex flex-col items-start justify-start gap-[1rem] text-color-6 "
+      >
         <Image
           className="w-full h-[1px] relative z-[1] object-cover"
           width={1300}
@@ -179,9 +228,6 @@ const Footer: NextPage<FooterType> = ({ className = "" }) => {
           max-[450px]:text-sm mq800:gap-6
           max-[450px]:gap-4 mq800:flex-col"
         >
-          {/* <div className="relative leading-[160%] z-[1] text-center">
-            © Copyright TechHarbor2024 All Rights Reserved
-          </div> */}
           <div className="relative leading-[160%] z-[1] sm:text-sm text-center">
             © Copyright DT-Systems 2024 All Rights Reserved.
           </div>
@@ -197,8 +243,8 @@ const Footer: NextPage<FooterType> = ({ className = "" }) => {
             </a>
           </div>
         </div>
-      </div>
-    </footer>
+      </motion.div>
+    </motion.footer>
   );
 };
 

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 export type ConnectWithUsType = {
   className?: string;
@@ -102,19 +103,61 @@ const ConnectWithUs: React.FC<ConnectWithUsType> = ({ className = "" }) => {
     }
   };
 
+  const fadeInUp = {
+    initial: { opacity: 0, y: 20 },
+    animate: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: [0.25, 0.1, 0.25, 1],
+      }
+    }
+  };
+
+  const formContainer = {
+    initial: { opacity: 0 },
+    animate: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2
+      }
+    }
+  };
+
+  const slideIn = {
+    initial: { x: 100, opacity: 0 },
+    animate: {
+      x: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.8,
+        ease: [0.25, 0.1, 0.25, 1],
+      }
+    }
+  };
+
   return (
-    <div
+    <motion.div
+      initial="initial"
+      whileInView="animate"
+      viewport={{ once: false, amount: 0.3 }}
       id="contactUs"
       data-section="contactUs"
       className="contact-us-section w-full mx-auto px-8 flex flex-row bg-none gap-[10rem] mq1050:flex-col-reverse mq1050:gap-[4rem]"
     >
       {/* Left side - Form */}
-      <div className="flex-1">
-        <form
-          className="grid grid-cols-2 gap-x-10 gap-y-10 form pl-[2rem] mq1050:w-[90%] mq450:w-[85%]  mq1050:pl-[1rem] mq800:ml-[-1rem]"
+      <motion.div 
+        variants={formContainer}
+        className="flex-1"
+      >
+        <motion.form
+          className="grid grid-cols-2 gap-x-10 gap-y-10 form pl-[2rem] mq1050:w-[90%] mq450:w-[85%] mq1050:pl-[1rem] mq800:ml-[-1rem]"
           onSubmit={handleSubmit}
         >
-          <div className="flex flex-col">
+          {/* Wrap each input in motion.div */}
+          <motion.div variants={fadeInUp} className="flex flex-col">
             <input
               type="text"
               name="name"
@@ -124,8 +167,8 @@ const ConnectWithUs: React.FC<ConnectWithUsType> = ({ className = "" }) => {
               style={{ borderBottom: "1px solid gray" }}
               className="border-b border-gray-500 pb-3 outline-none text-lg placeholder:text-gray-800 text-muted-foreground opacity-50 text-[17px] border-b border-gray-400"
             />
-          </div>
-          <div className="flex flex-col">
+          </motion.div>
+          <motion.div variants={fadeInUp} className="flex flex-col">
             <input
               type="email"
               name="email"
@@ -135,8 +178,8 @@ const ConnectWithUs: React.FC<ConnectWithUsType> = ({ className = "" }) => {
               style={emailStyle}
               className="border-b border-gray-200 pb-3 outline-none text-lg placeholder:text-gray-800 text-muted-foreground opacity-50 text-[17px] border-b border-gray-400"
             />
-          </div>
-          <div className="flex flex-col mt-7">
+          </motion.div>
+          <motion.div variants={fadeInUp} className="flex flex-col mt-7">
             <input
               type="tel"
               name="phone"
@@ -146,8 +189,8 @@ const ConnectWithUs: React.FC<ConnectWithUsType> = ({ className = "" }) => {
               style={{ borderBottom: "1px solid gray" }}
               className="border-b border-gray-200 pb-3 outline-none text-lg placeholder:text-gray-800 text-muted-foreground opacity-50 text-[17px] border-b border-gray-400"
             />
-          </div>
-          <div className="flex flex-col mt-7">
+          </motion.div>
+          <motion.div variants={fadeInUp} className="flex flex-col mt-7">
             <input
               type="text"
               name="country"
@@ -157,8 +200,8 @@ const ConnectWithUs: React.FC<ConnectWithUsType> = ({ className = "" }) => {
               style={{ borderBottom: "1px solid gray" }}
               className="border-b border-gray-200 pb-3 outline-none text-lg placeholder:text-gray-800 text-muted-foreground opacity-50 text-[17px] border-b border-gray-400"
             />
-          </div>
-          <div className="flex flex-col mt-7">
+          </motion.div>
+          <motion.div variants={fadeInUp} className="flex flex-col mt-7">
             <input
               type="text"
               name="companyName"
@@ -168,8 +211,8 @@ const ConnectWithUs: React.FC<ConnectWithUsType> = ({ className = "" }) => {
               style={{ borderBottom: "1px solid gray" }}
               className="border-b border-gray-200 pb-3 outline-none text-lg placeholder:text-gray-800 text-muted-foreground opacity-50 text-[17px] border-b border-gray-400"
             />
-          </div>
-          <div className="flex flex-col mt-7">
+          </motion.div>
+          <motion.div variants={fadeInUp} className="flex flex-col mt-7">
             <input
               type="text"
               name="position"
@@ -179,8 +222,8 @@ const ConnectWithUs: React.FC<ConnectWithUsType> = ({ className = "" }) => {
               style={{ borderBottom: "1px solid gray" }}
               className="border-b border-gray-200 pb-3 outline-none text-lg placeholder:text-gray-800 text-muted-foreground opacity-50 text-[17px] border-b border-gray-400"
             />
-          </div>
-          <div className="col-span-2 flex flex-col mt-7">
+          </motion.div>
+          <motion.div variants={fadeInUp} className="col-span-2 flex flex-col mt-7">
             <input
               type="text"
               name="message"
@@ -190,8 +233,8 @@ const ConnectWithUs: React.FC<ConnectWithUsType> = ({ className = "" }) => {
               style={{ borderBottom: "1px solid gray" }}
               className="border-b border-gray-200 pb-3 outline-none text-lg placeholder:text-gray-800 text-muted-foreground opacity-50 text-[17px] border-b border-gray-400"
             />
-          </div>
-          <div>
+          </motion.div>
+          <motion.div variants={fadeInUp}>
             <button
               style={{ cursor: "pointer" }}
               type="submit"
@@ -199,23 +242,32 @@ const ConnectWithUs: React.FC<ConnectWithUsType> = ({ className = "" }) => {
             >
               Submit
             </button>
-          </div>
-        </form>
-      </div>
+          </motion.div>
+        </motion.form>
+      </motion.div>
 
       {/* Right side - Text */}
-      <div className="flex-1 ml-0 md:ml-[10rem] md:block mq1050:flex mq1050:items-center mq1050:justify-center">
-        <h2 className="text-[3rem] font-bold leading-[1.1] text-gray-900 m-0 mq470:text-[2rem] mq470:leading-[2.438rem] mq700:ml-[-6rem] mq700:text-center mq700:text-[2rem]">
+      <motion.div 
+        variants={slideIn}
+        className="flex-1 ml-0 md:ml-[10rem] md:block mq1050:flex mq1050:items-center mq1050:justify-center"
+      >
+        <motion.h2 
+          variants={fadeInUp}
+          className="text-[3rem] font-bold leading-[1.1] text-gray-900 m-0 mq470:text-[2rem] mq470:leading-[2.438rem] mq700:ml-[-6rem] mq700:text-center mq700:text-[2rem]"
+        >
           Connect with us!
           <br />
           <span className="mq1050:hidden"> Let's Grow..</span>
-        </h2>
-        <p className="text-gray-800 mt-6 text-lg leading-relaxed max-w-[70%] w-[60%] opacity-50 mq1050:hidden">
+        </motion.h2>
+        <motion.p 
+          variants={fadeInUp}
+          className="text-gray-800 mt-6 text-lg leading-relaxed max-w-[70%] w-[60%] opacity-50 mq1050:hidden"
+        >
           We prioritize responding to your inquiries promptly to ensure you
           receive the assistance you need in a timely manner.
-        </p>
-      </div>
-    </div>
+        </motion.p>
+      </motion.div>
+    </motion.div>
   );
 };
 

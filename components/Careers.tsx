@@ -1,11 +1,61 @@
 import type { NextPage } from "next";
 import Image from "next/image";
+import { motion } from "framer-motion";
+import { useState, useRef, useEffect } from "react";
 
 export type CareersType = {
   className?: string;
 };
 
 const Careers: NextPage<CareersType> = ({ className = "" }) => {
+  const [isInView, setIsInView] = useState(false);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          // Update isInView based on current intersection status
+          setIsInView(entry.isIntersecting);
+        });
+      },
+      { 
+        threshold: 0.2,
+        rootMargin: "-100px" // Adjust this value to control when animation triggers
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  const contentVariants = {
+    hidden: { opacity: 0, x: -100 },
+    visible: { 
+      opacity: 1, 
+      x: 0,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  const imageVariants = {
+    hidden: { opacity: 0, scale: 0.95 },
+    visible: { 
+      opacity: 1, 
+      scale: 1,
+      transition: {
+        duration: 0.8,
+        delay: 0.3
+      }
+    }
+  };
+
   const handleSectionClick = (e: React.MouseEvent, sectionId: string) => {
     e.preventDefault();
     scrollToSection(sectionId);
@@ -28,13 +78,19 @@ const Careers: NextPage<CareersType> = ({ className = "" }) => {
 
   return (
     <section
+      ref={sectionRef}
       id="careers"
       data-section="careers"
       className={`careers-section self-stretch flex flex-row items-start justify-start pt-[0rem] px-[0rem] pb-[2.5rem] box-border max-w-full text-left text-[3.375rem] text-white font-archivo ${className}`}
     >
       <div className="flex-1 bg-color flex flex-col items-start justify-start pt-[5.5rem] px-[4.375rem] pb-[6.75rem] box-border relative gap-[1.5rem] max-w-full mq800:pt-[3.563rem] mq800:px-[2.188rem] mq800:pb-[4.375rem] mq800:box-border">
         <div className="w-[90rem] h-[42.688rem] relative bg-color hidden max-w-full z-[0]" />
-        <div className="w-[33.25rem] flex flex-col items-start justify-start gap-[1rem] max-w-full mq1050:items-center mq1050:justify-center mq1050:w-[100%]">
+        <motion.div 
+          variants={contentVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          className="w-[33.25rem] flex flex-col items-start justify-start gap-[1rem] max-w-full mq1050:items-center mq1050:justify-center mq1050:w-[100%]"
+        >
           <div>
             {" "}
             <h1 className="m-0 relative text-inherit leading-[120%] capitalize font-bold font-inherit z-[2] mq800:text-[2.688rem] mq800:leading-[3.25rem] mq450:text-[2rem] mq450:leading-[2.438rem]">
@@ -71,7 +127,7 @@ const Careers: NextPage<CareersType> = ({ className = "" }) => {
               Get in Touch
             </div>
           </button>
-        </div>
+        </motion.div>
         <div className="w-full h-full absolute !m-[0] top-[0rem] right-[0rem] bottom-[0rem] left-[0rem]">
           <Image
             className="absolute h-full top-[0rem] bottom-[0rem] left-[0rem] max-h-full w-[86.594rem] z-[1]"
@@ -80,13 +136,20 @@ const Careers: NextPage<CareersType> = ({ className = "" }) => {
             alt=""
             src="/dots.svg"
           />
-          <Image
-            className="absolute h-full top-[0rem] bottom-[0rem] left-[45.5rem] max-h-full w-[44.5rem] object-cover z-[2] mq1050:hidden ml-[5rem]"
-            width={712}
-            height={683}
-            alt=""
-            src="/groupofcoworkersworkingtogetherandtalkingat20231127050146utc-1@2x.png"
-          />
+          <motion.div
+            variants={imageVariants}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+            className="absolute h-full top-[0rem] bottom-[0rem] left-[45.5rem] max-h-full w-[44.5rem] z-[2] mq1050:hidden ml-[5rem]"
+          >
+            <Image
+              className="w-full h-full object-cover"
+              width={712}
+              height={683}
+              alt=""
+              src="/groupofcoworkersworkingtogetherandtalkingat20231127050146utc-1@2x.png"
+            />
+          </motion.div>
         </div>
       </div>
     </section>
