@@ -106,10 +106,11 @@ const ConnectWithUs: React.FC<ConnectWithUsType> = ({ className = "" }) => {
     <div
       id="contactUs"
       data-section="contactUs"
-      className="contact-us-section w-full mx-auto px-9 flex flex-row bg-none gap-[4.3rem] mq1050:flex-col-reverse mq1050:gap-[3rem]"
+      className="contact-us-section w-full flex justify-start bg-none gap-[4.3rem] mq1050:flex-col-reverse mq1050:gap-[3rem]"
     >
+      <div className="max-w-[1536px] mx-auto w-full px-[4.375rem] flex flex-row bg-none gap-[4.3rem] mq1050:flex-col-reverse mq1050:gap-[3rem]">
       {/* Left side - Form */}
-      <div className="w-[48%] mq1050:w-full pl-[2rem] mq1050:pl-[1rem]">
+      <div className="w-[48%] mq1050:w-full  mq1050:pl-[1rem]">
         <form
           className="grid grid-cols-2 gap-x-8 gap-y-8 form mq1050:w-[90%] mq450:w-[85%] mq800:ml-[-1rem]"
           onSubmit={handleSubmit}
@@ -216,6 +217,7 @@ const ConnectWithUs: React.FC<ConnectWithUsType> = ({ className = "" }) => {
             receive the assistance you need in a timely manner.
           </p>
         </div>
+      </div>
       </div>
     </div>
   );

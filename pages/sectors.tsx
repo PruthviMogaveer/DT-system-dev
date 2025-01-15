@@ -6,7 +6,7 @@ import Image from "next/image";
 import { motion, AnimatePresence, MotionStyle } from "framer-motion";
 import NavbarPage from "../components/NavbarPage";
 import Footer from "../components/Footer";
-import Hero from "../components/Hero";
+import Heros from "../components/Heros";  // Change this import
 
 // Define the sector data structure
 interface SectorData {
@@ -221,9 +221,8 @@ const Sectors: NextPage = () => {
       <div style={{ height: "110px", width: "100%", backgroundColor: "#112e11f0" }} >
         <div className=" mt-[2rem] mq1240:mt-[3rem]"><NavbarPage /></div>
       </div>
-      <Hero
-        frameSectionWidth="unset"
-        frameSectionAlignSelf="stretch"
+      <Heros
+        
         teamworkWithBusinessPeople="/maleleadertalkingtoemployeesshowingtheplan20231127050345utc@2x.png"
         heroTitle="Sectors"
         homeServiceAdvisory="Home • Sectors"
@@ -235,6 +234,8 @@ const Sectors: NextPage = () => {
         style={section}
         className="self-stretch flex flex-row items-start justify-start pt-[0rem] px-[4.375rem] pb-[4.5rem] box-border max-w-full mq1325:px-[2rem] mq800:px-[1rem] mq800:pb-[3rem] mq450:px-[0.5rem] mq450:pb-[2rem] p-[1.5rem] sectorSection"
       >
+        <div className="max-w-[1536px] mx-auto w-full ">
+
         <div className="w-full flex flex-col items-start justify-start gap-[2rem] mq1325:w-full mq800:w-full" data-acc-group>
           {SectorData.map((item, index) => (
             <motion.div
@@ -285,7 +286,10 @@ const Sectors: NextPage = () => {
                   >
                     <div className="flex flex-row items-start justify-start gap-6 responsive
                     mq1226:flex-col mq1226:w-full mq1226:flex-col w-100%" style={{ width: "100%" }}>
-                      <div
+                      <motion.div
+                        variants={imageVariants}
+                        initial="hidden"
+                        animate="visible"
                         className="w-[33.25rem] relative
                         mq1226:w-full mq1226:max-h-[400px]
                         mq800:max-h-[600px]
@@ -307,7 +311,7 @@ const Sectors: NextPage = () => {
                           alt=""
                           src={item.image}
                         />
-                      </div>
+                      </motion.div>
 
                       <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -380,6 +384,7 @@ const Sectors: NextPage = () => {
               </AnimatePresence>
             </motion.div>
           ))}
+        </div>
         </div>
       </motion.section>
       <Footer />

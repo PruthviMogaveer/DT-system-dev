@@ -74,6 +74,18 @@ const ServicesImplementation: NextPage = () => {
     }
   };
 
+  const imageVariants = {
+    hidden: { opacity: 0, x: -50 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 1,
+        ease: [0.25, 0.1, 0.25, 1],
+      }
+    }
+  };
+
   // State management
   const [section, setSection] = useState<StyleState>({});
   const [padding, setPadding] = useState<StyleState>({});
@@ -239,11 +251,21 @@ const ServicesImplementation: NextPage = () => {
         heroTitle="Implementation Services"
         homeServiceAdvisory="Home • Service • Implementation"
       />
-      <div className="w-[54.813rem] relative leading-[1.875rem] whitespace-pre-wrap inline-block max-w-full font-archivo text-[1.125rem] text-color-6 ml-[3.5rem] mt-[0rem] mb-[4rem] mq1000:w-[80%] mq900:ml-[0.5rem] mq400:text-[1.2rem] mq400:leading-[2rem]" style={{ padding: "1rem !important" }} >
+      <div className="self-stretch flex flex-row items-start justify-start pt-[0rem] 
+          px-[4.375rem] pb-[4.5rem] box-border max-w-full 
+          mq1325:px-[2rem] 
+          mq800:px-[1rem] mq800:pb-[3rem]
+          mq450:px-[0.5rem] mq450:pb-[2rem] p-[4rem] mq900:p-[1.5rem] relative leading-[1.875rem] whitespace-pre-wrap inline-block  font-archivo text-[1.125rem] text-color-6 mq400:text-[1.2rem] mq400:leading-[2rem]" style={{ padding: "1rem !important" }} 
+      >
+        <div className="max-w-[1536px] mx-auto w-full">
+
+     <div className="w-[58rem]">
         The following are the implementation services we can deliver to help you
         realise your strategic goals. They also set the foundation to approach
         custom automated workflows, e.g. loan operations, claims management,
         etc.
+        </div>
+      </div>
       </div>
       <motion.section
         ref={sectionRef}
@@ -257,6 +279,7 @@ const ServicesImplementation: NextPage = () => {
           mq800:px-[1rem] mq800:pb-[3rem]
           mq450:px-[0.5rem] mq450:pb-[2rem] p-[4rem] mq900:p-[1.5rem]"
       >
+        <div className="max-w-[1536px] mx-auto w-full">
 
         <div
           className="w-full flex flex-col items-start justify-start gap-[2rem]
@@ -317,7 +340,11 @@ const ServicesImplementation: NextPage = () => {
                   >
                     <div className="flex flex-row items-start justify-start gap-6 responsive
                       mq1226:flex-col mq1226:w-full mq1226:flex-col">
-                      <div className="w-[33.25rem] relative
+                      <motion.div
+                        variants={imageVariants}
+                        initial="hidden"
+                        animate="visible"
+                        className="w-[33.25rem] relative
                           mq1226:w-full mq1226:max-h-[400px]
                           mq800:max-h-[600px]
                           mq450:max-h-[800px]"
@@ -329,6 +356,7 @@ const ServicesImplementation: NextPage = () => {
                             marginLeft: isSmallScreen ? "0" : "1rem",
                             width: isSmallScreen ? "100%" : undefined,
                             height: isSmallScreen ? "20rem" : undefined,
+
                           }}
                           className="rounded-11xl object-cover img mq1226:w-[100%] mq1226:h-[10rem]"
                           loading="lazy"
@@ -337,7 +365,7 @@ const ServicesImplementation: NextPage = () => {
                           alt=""
                           src={item.image}
                         />
-                      </div>
+                      </motion.div>
 
                       <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -407,7 +435,9 @@ const ServicesImplementation: NextPage = () => {
             </motion.div>
           ))}
         </div>
+        </div>
       </motion.section>
+    
       <Footer />
     </div>
   );

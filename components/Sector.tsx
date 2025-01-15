@@ -80,8 +80,9 @@ const Sector: NextPage<SectorType> = ({ className = "" }) => {
   return (
     <section
       ref={sectionRef}
-      className={`self-stretch flex flex-row items-start justify-start pt-[0rem] px-[4.375rem] pb-[0.25rem] box-border max-w-full text-left text-[3.375rem] text-gray-200 font-archivo mq800:pl-[2.188rem] mq800:pr-[2.188rem] mq800:box-border ${className} mq900:p-[1rem]`}
+      className={`self-stretch flex flex-row items-start justify-center pt-[0rem] px-[4.375rem] pb-[0.25rem] box-border max-w-full text-left text-[3.375rem] text-gray-200 font-archivo mq800:pl-[2.188rem] mq800:pr-[2.188rem] mq800:box-border ${className} mq900:p-[1rem]`}
     >
+      <div className="max-w-[1536px] self-stretch flex flex-row items-start justify-start box-border text-left text-[3.375rem] text-gray-200 font-archivo ">
       <div className="flex-1 flex flex-row items-start justify-start gap-[4rem] max-w-full mq800:gap-[3.688rem] mq450:gap-[3.375rem] mq1350:flex-wrap mq1050:flex-col mq1050:gap-[3rem] mq1050:items-center mq1050:justify-center">
         <div className="flex-1 flex flex-col items-start justify-start pt-[8.187rem] px-[0rem] pb-[0rem] box-border min-w-[27.688rem] max-w-full mq800:min-w-full mq450:pt-[5.313rem] mq450:box-border mq1050:pt-[0] mq1050:items-center">
           <div className="self-stretch flex flex-col items-start justify-start gap-[1rem] mq1050:items-center ">
@@ -155,6 +156,7 @@ const Sector: NextPage<SectorType> = ({ className = "" }) => {
             />
           </div>
         </div>
+      </div>
       </div>
     </section>
   );

@@ -34,8 +34,9 @@ const Footer: NextPage<FooterType> = ({ className = "" }) => {
       max-[450px]:pt-10
       ${className}`}
     >
+      <div className="max-w-[1536px] mx-auto w-full flex flex-col items-start justify-start box-border gap-[2.062rem] text-left text-[1.125rem] text-gray-300 font-archivo">
       <div
-        className="w-full flex  justify-between gap-12 max-w-full  flex-wrap
+        className="w-full flex  max-w-[1536px] justify-between gap-12 flex-wrap
         footer mq500:flex-col mq500:items-center mq500:gap-5rem "
       >
         {/* First Column */}
@@ -166,7 +167,7 @@ const Footer: NextPage<FooterType> = ({ className = "" }) => {
       </div>
 
       {/* Footer Divider */}
-      <div className="w-full flex flex-col items-start justify-start gap-[1rem] text-color-6 ">
+      <div className="w-full  max-w-[1536px] flex flex-col items-start justify-start gap-[1rem] text-color-6 ">
         <Image
           className="w-full h-[1px] relative z-[1] object-cover"
           width={1300}
@@ -197,6 +198,7 @@ const Footer: NextPage<FooterType> = ({ className = "" }) => {
             </a>
           </div>
         </div>
+      </div>
       </div>
     </footer>
   );

@@ -218,6 +218,8 @@ const DigitalTranspormationRoadmap: NextPage<
       }}
       className={`self-stretch flex flex-row items-start justify-start pt-[0rem] px-[4.375rem] pb-[9rem] box-border max-w-full text-left text-[1.5rem] text-color font-archivo mq800:pl-[2.188rem] mq800:pr-[2.188rem] mq800:pb-[3.813rem] mq1125:pb-[5.875rem] mq1125:box-border mq1226:ml-[-20px] mq1226:pl-0 mq900:pl-[3rem] mq550:mt-[5rem] mq900:pr-[0rem] ${className} `}
     >
+        <div className="max-w-[1536px] mx-auto w-full ">
+
       <div className="flex-1 flex flex-row items-start justify-start gap-[5.875rem] max-w-full mq800:gap-[2.938rem] mq450:gap-[1.438rem] mq1325:flex-wrap">
         <Image
           style={img}
@@ -412,6 +414,7 @@ const DigitalTranspormationRoadmap: NextPage<
             </motion.div>
           ))}
         </div>
+      </div>
       </div>
     </motion.section>
   );

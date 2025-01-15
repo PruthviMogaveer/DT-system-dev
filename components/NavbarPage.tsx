@@ -127,9 +127,10 @@ const NavbarPage: NextPage<NavbarPageType> = ({ className = "" }) => {
 
   return (
     <section
-      className={`self-stretch flex flex-row items-start justify-start pt-4 px-4 lg:px-[4.375rem] pb-4 lg:pb-[6.812rem] box-border max-w-full flex items-center mr-[50px] p-0 m-0 ${className} mq900:ml-[0rem]`}
+      className={`self-stretch flex flex-row items-start justify-start pt-4 px-4 lg:px-[4.375rem] pb-4 lg:pb-[6.812rem] box-border  flex items-center mr-[50px] p-0 m-0 ${className} mq900:ml-[0rem]`}
       style={style}
     >
+      <div className="max-w-[1536px] mx-auto w-full self-stretch flex flex-row items-start justify-start box-border">
       <header className="flex-1 flex flex-row items-center justify-between max-w-full gap-[1.25rem] text-left text-[1rem] text-white font-archivo relative navbar mt-[-1rem] ml-[-1.2rem] header-navbar mq450:ml-[2.5rem] mq900:ml-[0rem] mq900:pl[1rem] mq900:pr[1rem] mq900:ml-[-0.7rem] ">
         <div className={`flex items-center mt-[-5px] relative ml-[5%] xl:ml-[1rem] `}>
           <a href="/">
@@ -417,6 +418,7 @@ const NavbarPage: NextPage<NavbarPageType> = ({ className = "" }) => {
           </div>
         )}
       </header>
+      </div>
     </section>
   );
 };

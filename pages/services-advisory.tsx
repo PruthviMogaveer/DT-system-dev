@@ -36,40 +36,19 @@ const ServicesAdvisory: NextPage = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.4,
-        delayChildren: 0.3,
-        ease: [0.25, 0.1, 0.25, 1],
+        staggerChildren: 0.3, // Slight delay between child animations
+        delayChildren: 0.2, // Initial delay for smoother appearance
       },
     },
   };
 
   const textVariants = {
-    hidden: { 
-      opacity: 0, 
-      y: 100,
-      filter: "blur(8px)"
-    },
+    hidden: { opacity: 0, y: 70 },
     visible: {
       opacity: 1,
       y: 0,
-      filter: "blur(0px)",
-      transition: { 
-        duration: 1.5, 
-        ease: [0.25, 0.1, 0.25, 1],
-      },
+      transition: { duration: 1.2, ease: "easeInOut" },
     },
-  };
-
-  const imageVariants = {
-    hidden: { scale: 1.2, opacity: 0 },
-    visible: {
-      scale: 1,
-      opacity: 1,
-      transition: { 
-        duration: 2,
-        ease: [0.25, 0.1, 0.25, 1],
-      }
-    }
   };
 
   return (
@@ -102,9 +81,11 @@ const ServicesAdvisory: NextPage = () => {
         heroTitle="Service Advisory"
         homeServiceAdvisory="Home • Service • Advisory"
       />
+        <div className="max-w-[1536px] mx-auto w-full px-[4.375rem]">
+
       <div
         ref={ref}
-        className="w-[48.875rem] flex flex-row items-start justify-start pt-[0rem] px-[4.375rem] pb-[11.5rem] box-border max-w-full mq800:pl-[2.188rem] mq800:pr-[2.188rem] mq800:pb-[7.5rem] mq800:box-border"
+        className=" w-[48.875rem] flex flex-row items-start justify-start pt-[0rem]  pb-[11.5rem] box-border max-w-full mq800:pl-[2.188rem] mq800:pr-[2.188rem] mq800:pb-[7.5rem] mq800:box-border"
       >
         <motion.div
           className="flex-1 flex flex-col items-start justify-start gap-[0.5rem] max-w-full" style={{
@@ -171,6 +152,7 @@ const ServicesAdvisory: NextPage = () => {
         alt=""
         src="/screenshot-20241023-231953-1@2x.png"
       />
+      </div>
       <DigitalTranspormationRoadmap />
       <Footer />
     </div>
