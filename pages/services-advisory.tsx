@@ -36,19 +36,40 @@ const ServicesAdvisory: NextPage = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.3, // Slight delay between child animations
-        delayChildren: 0.2, // Initial delay for smoother appearance
+        staggerChildren: 0.4,
+        delayChildren: 0.3,
+        ease: [0.25, 0.1, 0.25, 1],
       },
     },
   };
 
   const textVariants = {
-    hidden: { opacity: 0, y: 70 },
+    hidden: { 
+      opacity: 0, 
+      y: 100,
+      filter: "blur(8px)"
+    },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 1.2, ease: "easeInOut" },
+      filter: "blur(0px)",
+      transition: { 
+        duration: 1.5, 
+        ease: [0.25, 0.1, 0.25, 1],
+      },
     },
+  };
+
+  const imageVariants = {
+    hidden: { scale: 1.2, opacity: 0 },
+    visible: {
+      scale: 1,
+      opacity: 1,
+      transition: { 
+        duration: 2,
+        ease: [0.25, 0.1, 0.25, 1],
+      }
+    }
   };
 
   return (

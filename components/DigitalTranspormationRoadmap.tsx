@@ -201,18 +201,6 @@ const DigitalTranspormationRoadmap: NextPage<
     return () => window.removeEventListener('resize', updateScreenSize);
   }, []);
 
-  const imageVariants = {
-    hidden: { opacity: 0, x: -50 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        duration: 1,
-        ease: [0.25, 0.1, 0.25, 1],
-      }
-    }
-  };
-
 
   // Add refs for scroll detection
   const sectionRef = useRef(null);
@@ -231,28 +219,15 @@ const DigitalTranspormationRoadmap: NextPage<
       className={`self-stretch flex flex-row items-start justify-start pt-[0rem] px-[4.375rem] pb-[9rem] box-border max-w-full text-left text-[1.5rem] text-color font-archivo mq800:pl-[2.188rem] mq800:pr-[2.188rem] mq800:pb-[3.813rem] mq1125:pb-[5.875rem] mq1125:box-border mq1226:ml-[-20px] mq1226:pl-0 mq900:pl-[3rem] mq550:mt-[5rem] mq900:pr-[0rem] ${className} `}
     >
       <div className="flex-1 flex flex-row items-start justify-start gap-[5.875rem] max-w-full mq800:gap-[2.938rem] mq450:gap-[1.438rem] mq1325:flex-wrap">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={sideImage}
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 30 }}
-            transition={{
-              duration: 1,
-              ease: [0.25, 0.1, 0.25, 1]
-            }}
-          >
-            <Image
-              style={img}
-              className="w-[34.25rem] relative rounded-11xl max-h-full object-cover max-w-full mq1325:flex-1 mq1226:hidden"
-              loading="lazy"
-              width={548}
-              height={834}
-              alt=""
-              src={sideImage}
-            />
-          </motion.div>
-        </AnimatePresence>
+        <Image
+          style={img}
+          className="w-[34.25rem] relative rounded-11xl max-h-full object-cover max-w-full mq1325:flex-1 mq1226:hidden"
+          loading="lazy"
+          width={548}
+          height={834}
+          alt=""
+          src={sideImage}
+        />
 
         <div
           className="flex-1 flex flex-col items-start justify-start gap-[1rem] min-w-[26.75rem] max-w-full mq800:min-w-full mq1226:pl-0"
@@ -335,36 +310,31 @@ const DigitalTranspormationRoadmap: NextPage<
                       className="w-full grid flex-row items-start justify-start pt-[0rem] px-[0rem] pb-[0.5rem] box-border cursor-default"
                     >
                       {isSmallScreen && (
-                        <AnimatePresence mode="wait">
-                          <motion.div
-                            variants={imageVariants}
-                            initial="hidden"
-                            animate="visible"
-                            className="w-[33.25rem] relative
+                        <div
+                          className="w-[33.25rem] relative
                           mq1226:w-full mq1226:max-h-[400px]
                           mq800:max-h-[600px]
                           mq450:max-h-[800px]
                          
                           "
-                          >
-                            <Image
-                              style={{
-                                margin: 0,
-                                marginTop: isSmallScreen ? "1rem" : "2rem",
-                                marginLeft: isSmallScreen ? "0" : "1rem",
-                                width: isSmallScreen ? "100%" : undefined,
-                                height: isSmallScreen ? "20rem" : undefined,
+                        >
+                          <Image
+                            style={{
+                              margin: 0,
+                              marginTop: isSmallScreen ? "1rem" : "2rem",
+                              marginLeft: isSmallScreen ? "0" : "1rem",
+                              width: isSmallScreen ? "100%" : undefined,
+                              height: isSmallScreen ? "20rem" : undefined,
 
-                              }}
-                              className="rounded-11xl object-cover img mq1226:w-[100%] mq1226:h-[10rem] advisoryImage"
-                              loading="lazy"
-                              width={532}
-                              height={400}
-                              alt=""
-                              src={sideImage}
-                            />
-                          </motion.div>
-                        </AnimatePresence>
+                            }}
+                            className="rounded-11xl object-cover img mq1226:w-[100%] mq1226:h-[10rem] advisoryImage"
+                            loading="lazy"
+                            width={532}
+                            height={400}
+                            alt=""
+                            src={sideImage}
+                          />
+                        </div>
                       )}
 
                       <div style={div} className="flex flex-row items-start justify-start py-[0rem] pl-[2rem] pr-[1.937rem] box-border text-[1.75rem] text-color-5">

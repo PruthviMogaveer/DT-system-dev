@@ -285,10 +285,7 @@ const Sectors: NextPage = () => {
                   >
                     <div className="flex flex-row items-start justify-start gap-6 responsive
                     mq1226:flex-col mq1226:w-full mq1226:flex-col w-100%" style={{ width: "100%" }}>
-                      <motion.div
-                        variants={imageVariants}
-                        initial="hidden"
-                        animate="visible"
+                      <div
                         className="w-[33.25rem] relative
                         mq1226:w-full mq1226:max-h-[400px]
                         mq800:max-h-[600px]
@@ -310,7 +307,7 @@ const Sectors: NextPage = () => {
                           alt=""
                           src={item.image}
                         />
-                      </motion.div>
+                      </div>
 
                       <motion.div
                         initial={{ opacity: 0, y: 20 }}

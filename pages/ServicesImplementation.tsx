@@ -74,18 +74,6 @@ const ServicesImplementation: NextPage = () => {
     }
   };
 
-  const imageVariants = {
-    hidden: { opacity: 0, x: -50 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        duration: 1,
-        ease: [0.25, 0.1, 0.25, 1],
-      }
-    }
-  };
-
   // State management
   const [section, setSection] = useState<StyleState>({});
   const [padding, setPadding] = useState<StyleState>({});
@@ -329,11 +317,7 @@ const ServicesImplementation: NextPage = () => {
                   >
                     <div className="flex flex-row items-start justify-start gap-6 responsive
                       mq1226:flex-col mq1226:w-full mq1226:flex-col">
-                      <motion.div
-                        variants={imageVariants}
-                        initial="hidden"
-                        animate="visible"
-                        className="w-[33.25rem] relative
+                      <div className="w-[33.25rem] relative
                           mq1226:w-full mq1226:max-h-[400px]
                           mq800:max-h-[600px]
                           mq450:max-h-[800px]"
@@ -345,7 +329,6 @@ const ServicesImplementation: NextPage = () => {
                             marginLeft: isSmallScreen ? "0" : "1rem",
                             width: isSmallScreen ? "100%" : undefined,
                             height: isSmallScreen ? "20rem" : undefined,
-
                           }}
                           className="rounded-11xl object-cover img mq1226:w-[100%] mq1226:h-[10rem]"
                           loading="lazy"
@@ -354,7 +337,7 @@ const ServicesImplementation: NextPage = () => {
                           alt=""
                           src={item.image}
                         />
-                      </motion.div>
+                      </div>
 
                       <motion.div
                         initial={{ opacity: 0, y: 20 }}
