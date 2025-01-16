@@ -107,10 +107,9 @@ const ServicesAdvisory: NextPage = () => {
               src="/screenshot-20241023-231953-1@2x.png"
             />
             
-            <div className="absolute inset-0 bg-black bg-opacity-50" />
             
             <div className="absolute inset-0 flex flex-col justify-center px-[4.375rem] gap-4
-              mq1325:px-[2rem] ">
+              mq1325:px-[2rem] max-w-[35rem]">
               <motion.i
                 style={{ opacity: text1Opacity }}
                 className="relative leading-[2rem] text-[1.25rem] mq550:text-[0.90rem] mq550:leading-[1.25rem]"
