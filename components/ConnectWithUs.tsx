@@ -108,11 +108,11 @@ const ConnectWithUs: React.FC<ConnectWithUsType> = ({ className = "" }) => {
       data-section="contactUs"
       className="contact-us-section w-full flex justify-start bg-none gap-[4.3rem] mq1050:flex-col-reverse mq1050:gap-[3rem]"
     >
-      <div className="max-w-[1536px] mx-auto w-full px-[4.375rem] flex flex-row bg-none gap-[4.3rem] mq1050:flex-col-reverse mq1050:gap-[3rem]">
+      <div className="max-w-[1536px] mx-auto w-full px-[4.375rem] mq1325:px-[2rem] flex flex-row bg-none gap-[4.3rem] mq1050:flex-col-reverse mq1050:gap-[3rem]">
       {/* Left side - Form */}
       <div className="w-[48%] mq1050:w-full  mq1050:pl-[1rem]">
         <form
-          className="grid grid-cols-2 gap-x-8 gap-y-8 form mq1050:w-[90%] mq450:w-[85%] mq800:ml-[-1rem]"
+          className="grid grid-cols-2 gap-x-8 gap-y-8 form mq1050:w-[90%] mq450:w-[85%]"
           onSubmit={handleSubmit}
         >
           <div className="flex flex-col">

@@ -251,21 +251,19 @@ const ServicesImplementation: NextPage = () => {
         heroTitle="Implementation Services"
         homeServiceAdvisory="Home • Service • Implementation"
       />
-      <div className="self-stretch flex flex-row items-start justify-start pt-[0rem] 
-          px-[4.375rem] pb-[4.5rem] box-border max-w-full 
+      <div className="self-stretch flex flex-row items-start justify-start max-w-full w-full">
+        <div className="max-w-[1536px] mx-auto w-full px-[4.375rem] py-[2rem]
           mq1325:px-[2rem] 
-          mq800:px-[1rem] mq800:pb-[3rem]
-          mq450:px-[0.5rem] mq450:pb-[2rem] p-[4rem] mq900:p-[1.5rem] relative leading-[1.875rem] whitespace-pre-wrap inline-block  font-archivo text-[1.125rem] text-color-6 mq400:text-[1.2rem] mq400:leading-[2rem]" style={{ padding: "1rem !important" }} 
-      >
-        <div className="max-w-[1536px] mx-auto w-full">
-
-     <div className="w-[58rem]">
-        The following are the implementation services we can deliver to help you
-        realise your strategic goals. They also set the foundation to approach
-        custom automated workflows, e.g. loan operations, claims management,
-        etc.
+          mq800:px-[1rem]
+          mq450:px-[0.5rem]">
+          <div className="font-archivo text-[1.125rem] text-color-6 leading-[2rem] max-w-[58rem]
+            mq1050:max-w-full mq400:text-[1rem] mq900:p-[0.5rem]">
+            The following are the implementation services we can deliver to help you
+            realise your strategic goals. They also set the foundation to approach
+            custom automated workflows, e.g. loan operations, claims management,
+            etc.
+          </div>
         </div>
-      </div>
       </div>
       <motion.section
         ref={sectionRef}
@@ -276,8 +274,8 @@ const ServicesImplementation: NextPage = () => {
         className="self-stretch flex flex-row items-start justify-start pt-[0rem] 
           px-[4.375rem] pb-[4.5rem] box-border max-w-full 
           mq1325:px-[2rem] 
-          mq800:px-[1rem] mq800:pb-[3rem]
-          mq450:px-[0.5rem] mq450:pb-[2rem] p-[4rem] mq900:p-[1.5rem]"
+          mq800:pb-[3rem]
+          mq450:pb-[2rem] p-[4rem] mq900:p-[1.5rem]"
       >
         <div className="max-w-[1536px] mx-auto w-full">
 
@@ -334,31 +332,27 @@ const ServicesImplementation: NextPage = () => {
                     initial="hidden"
                     animate="visible"
                     exit="exit"
-                    className="w-full flex flex-col items-center justify-start overflow-hidden
-                      mq1325:w-full
-                      mq800:w-full"
+                    className="w-full bg-white flex flex-col items-center justify-start overflow-hidden px-[2rem]"
                   >
-                    <div className="flex flex-row items-start justify-start gap-6 responsive
-                      mq1226:flex-col mq1226:w-full mq1226:flex-col">
+                    <div className="w-full flex flex-row items-start justify-between gap-[2rem] mt-[1rem]
+                        mq1226:flex-col mq1226:gap-[1rem]">
                       <motion.div
                         variants={imageVariants}
                         initial="hidden"
                         animate="visible"
-                        className="w-[33.25rem] relative
-                          mq1226:w-full mq1226:max-h-[400px]
-                          mq800:max-h-[600px]
-                          mq450:max-h-[800px]"
+                        className="min-w-[300px] w-[35%] flex-shrink-0 flex items-center
+                          mq1226:min-w-full mq1226:w-full"
                       >
                         <Image
                           style={{
-                            margin: 0,
-                            marginTop: isSmallScreen ? "1rem" : "2rem",
-                            marginLeft: isSmallScreen ? "0" : "1rem",
-                            width: isSmallScreen ? "100%" : undefined,
-                            height: isSmallScreen ? "20rem" : undefined,
-
+                            width: '100%',
+                            height: isSmallScreen ? "20rem" : "auto",
+                            maxHeight: '400px',
+                            objectFit: 'cover',
+                            borderRadius: '12px',
+                            margin: 0
                           }}
-                          className="rounded-11xl object-cover img mq1226:w-[100%] mq1226:h-[10rem]"
+                          className="rounded-11xl"
                           loading="lazy"
                           width={532}
                           height={400}
@@ -370,62 +364,55 @@ const ServicesImplementation: NextPage = () => {
                       <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.3, duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-                        className="w-full grid flex-row items-start justify-start pt-[0rem] px-[0rem] pb-[0.5rem] box-border cursor-default
-                          mq1226:px-[1rem]
-                          mq800:px-[0.5rem]"
+                        transition={{ delay: 0.3, duration: 0.8 }}
+                        className="flex-1 min-w-0 flex flex-col items-start justify-center py-[1rem] pt-0
+                          mq1226:w-full"
                       >
-                        <div style={div} className="flex flex-row items-start justify-start py-[0rem] pl-[2rem] pr-[1.937rem] box-border text-[1.75rem] text-color-5">
+                        <div className="w-full flex flex-col gap-[1.5rem]">
                           <motion.h1
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.4, duration: 0.8 }}
-                            className="w-[21.063rem] font-medium font-archivo text-[2rem] bg-[transparent] relative leading-[3.125rem] text-left inline-block p-0 z-[10] mq450:text-[1.188rem] mq450:leading-[2.5rem] whitespace-nowrap mq550:text-[1.5rem] mq550:leading-[2.5rem] mq400:text-[1.2rem] mq400:leading-[2.5rem]"
+                            className="w-full font-medium font-archivo text-[2rem] leading-[3.125rem]
+                              mq600:text-[1.5rem] mq600:leading-[2.5rem]
+                              mq500:text-[1.2rem] mq500:leading-[1.5rem]"
                           >
                             {item.content.text}
                           </motion.h1>
-                        </div>
-                        <div style={div} className="flex flex-row items-start justify-start pt-[0rem] px-[2rem] pb-[1rem] box-border text-[1.125rem] text-color-6">
-                          <div className="flex flex-col items-start justify-start gap-[1rem]">
-                            <motion.div
-                              initial={{ opacity: 0, y: 20 }}
-                              animate={{ opacity: 1, y: 0 }}
-                              transition={{ delay: 0.5, duration: 0.8 }}
-                              className="flex flex-col gap-[0.5rem]"
-                            >
-                              <div className="w-[37.75rem] relative text-[1.125rem] leading-[1.875rem] text-color-6 inline-block mq800:w-[100%] mq400:w-[80%]" style={{ fontFamily: "Archivo" }}>
-                                {item.content.deliverResilientITServices}
-                              </div>
-                            </motion.div>
-                            <motion.div
-                              initial={{ opacity: 0, y: 20 }}
-                              animate={{ opacity: 1, y: 0 }}
-                              transition={{ delay: 0.6, duration: 0.8 }}
-                              className="flex flex-col gap-[0.5rem] text-[1.5rem] text-color-5 mq400:w-[80%]"
-                            >
-                              <div className="relative leading-[2.5rem] font-semibold mq450:text-[1.188rem] mq450:leading-[2rem]" style={{ fontFamily: "Archivo" }}>
-                                Benefits
-                              </div>
-                              <div className="relative text-[1.125rem] leading-[150%] text-color-6">
-                                <ul className="m-0 font-inherit text-inherit pl-[1.333rem]" style={{ fontFamily: "Archivo" }}>
-                                  {[
-                                    item.content.unburdenYourITServicesStaff,
-                                    item.content.createResilientAdaptablePeople1,
-                                    item.content.deliverITServicesOnASingle1
-                                  ].map((benefit, benefitIndex) => (
-                                    <motion.li
-                                      key={benefitIndex}
-                                      initial={{ opacity: 0, x: -20 }}
-                                      animate={{ opacity: 1, x: 0 }}
-                                      transition={{ delay: 0.7 + benefitIndex * 0.2, duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-                                    >
-                                      {benefit}
-                                    </motion.li>
-                                  ))}
-                                </ul>
-                              </div>
-                            </motion.div>
+
+                          <div className="w-full relative text-[1.125rem] leading-[1.875rem] text-color-6 font-archivo">
+                            {item.content.deliverResilientITServices}
                           </div>
+
+                          <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.5, duration: 0.8 }}
+                            className="flex flex-col gap-[0.5rem] text-[1.5rem] text-color-5"
+                          >
+                            <div className="relative leading-[2.5rem] font-semibold mq450:text-[1.188rem] mq450:leading-[2rem]" style={{ fontFamily: "Archivo" }}>
+                              Benefits
+                            </div>
+                            <div className="relative text-[1.125rem] leading-[150%] text-color-6">
+                              <ul className="m-0 font-inherit text-inherit pl-[1.333rem]">
+                                {[
+                                  item.content.unburdenYourITServicesStaff,
+                                  item.content.createResilientAdaptablePeople1,
+                                  item.content.deliverITServicesOnASingle1
+                                ].map((benefit, benefitIndex) => (
+                                  <motion.li
+                                    key={benefitIndex}
+                                    initial={{ opacity: 0, x: -20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ delay: 0.7 + benefitIndex * 0.2, duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+                                    style={{ fontFamily: "Archivo" }}
+                                  >
+                                    {benefit}
+                                  </motion.li>
+                                ))}
+                              </ul>
+                            </div>
+                          </motion.div>
                         </div>
                       </motion.div>
                     </div>

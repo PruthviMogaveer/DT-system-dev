@@ -212,18 +212,27 @@ const DigitalTranspormationRoadmap: NextPage<
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
       transition={{
-        duration: 0.8,
+        duration: 0.6,
         ease: [0.25, 0.1, 0.25, 1],
-        staggerChildren: 0.1
       }}
-      className={`self-stretch flex flex-row items-start justify-start pt-[0rem] px-[4.375rem] pb-[9rem] box-border max-w-full text-left text-[1.5rem] text-color font-archivo mq800:pl-[2.188rem] mq800:pr-[2.188rem] mq800:pb-[3.813rem] mq1125:pb-[5.875rem] mq1125:box-border mq1226:ml-[-20px] mq1226:pl-0 mq900:pl-[3rem] mq550:mt-[5rem] mq900:pr-[0rem] ${className} `}
+      className="self-stretch flex flex-row items-start justify-start pt-[2rem] px-[4.375rem] pb-[9rem] box-border max-w-full text-left text-[1.5rem] text-color font-archivo
+      mq1325:px-[2rem] 
+      mq800:pb-[3.813rem]
+      mq450:pb-[2rem]"
     >
-        <div className="max-w-[1536px] mx-auto w-full ">
-
-      <div className="flex-1 flex flex-row items-start justify-start gap-[5.875rem] max-w-full mq800:gap-[2.938rem] mq450:gap-[1.438rem] mq1325:flex-wrap">
+      <div className="max-w-[1536px] mx-auto w-full flex flex-row items-start justify-center gap-[5.875rem] 
+      mq1325:gap-[2.938rem] 
+      mq800:gap-[1.438rem] 
+      mq450:gap-[1rem]">
         <Image
-          style={img}
-          className="w-[34.25rem] relative rounded-11xl max-h-full object-cover max-w-full mq1325:flex-1 mq1226:hidden"
+          style={{
+            ...img,
+            marginTop: isSmallScreen ? '0' : '0.5rem',
+            width: '100%',
+            maxWidth: '34.25rem',
+            height: 'auto'
+          }}
+          className="rounded-11xl object-cover mq1325:flex-1 mq1226:hidden"
           loading="lazy"
           width={548}
           height={834}
@@ -231,12 +240,11 @@ const DigitalTranspormationRoadmap: NextPage<
           src={sideImage}
         />
 
-        <div
-          className="flex-1 flex flex-col items-start justify-start gap-[1rem] min-w-[26.75rem] max-w-full mq800:min-w-full mq1226:pl-0"
-          data-acc-group
+        <div className="flex-1 flex flex-col items-start justify-start gap-[1rem] min-w-[26.75rem] max-w-full 
+        mq800:min-w-full"
           style={{
             width: '100%',
-            paddingLeft: isSmallScreen ? '0' : undefined
+            maxWidth: isSmallScreen ? '100%' : '700px'
           }}
         >
           {accordionData.map((item, index) => (
@@ -244,18 +252,28 @@ const DigitalTranspormationRoadmap: NextPage<
               key={item.id}
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ duration: 1, delay: index * 0.4 }}
-              style={{ width: '100%' }}
+              transition={{
+                duration: 0.5,
+                delay: index * 0.2,
+                ease: [0.25, 0.1, 0.25, 1]
+              }}
+              style={{
+                width: '100%',
+                margin: 0,
+                maxWidth: '100%',
+                overflow: 'hidden'
+              }}
             >
               <div
                 className="w-full h-auto flex flex-col items-start justify-start pt-0 px-0 pb-[1rem] box-border cursor-pointer gap-[1.5rem]
                   mq1325:w-full mq1325:gap-[1.25rem]
                   mq800:w-full mq800:gap-[1rem]
-                  mq450:w-full mq450:gap-[0.75rem] "
+                  mq450:w-full mq450:gap-[0.75rem]"
                 style={{
                   width: '100%',
                   minWidth: '100%',
-                  maxWidth: '100%'
+                  maxWidth: '100%',
+                  overflow: 'hidden'
                 }}
                 data-acc-item
                 data-acc-header
@@ -310,24 +328,19 @@ const DigitalTranspormationRoadmap: NextPage<
                         opacity: { duration: 1, delay: 0.4 }
                       }}
                       className="w-full grid flex-row items-start justify-start pt-[0rem] px-[0rem] pb-[0.5rem] box-border cursor-default"
+                      style={{
+                        maxWidth: '100%',
+                        overflow: 'hidden'
+                      }}
                     >
                       {isSmallScreen && (
-                        <div
-                          className="w-[33.25rem] relative
-                          mq1226:w-full mq1226:max-h-[400px]
-                          mq800:max-h-[600px]
-                          mq450:max-h-[800px]
-                         
-                          "
-                        >
+                        <div className="w-full relative mq1226:max-h-[400px] mq800:max-h-[600px] mq450:max-h-[800px]">
                           <Image
                             style={{
                               margin: 0,
                               marginTop: isSmallScreen ? "1rem" : "2rem",
-                              marginLeft: isSmallScreen ? "0" : "1rem",
-                              width: isSmallScreen ? "100%" : undefined,
+                              width: "100%",
                               height: isSmallScreen ? "20rem" : undefined,
-
                             }}
                             className="rounded-11xl object-cover img mq1226:w-[100%] mq1226:h-[10rem] advisoryImage"
                             loading="lazy"
@@ -339,12 +352,12 @@ const DigitalTranspormationRoadmap: NextPage<
                         </div>
                       )}
 
-                      <div style={div} className="flex flex-row items-start justify-start py-[0rem] pl-[2rem] pr-[1.937rem] box-border text-[1.75rem] text-color-5">
+                      <div className="w-full flex flex-row items-start justify-start py-[0rem] pr-[1.937rem] box-border text-[1.75rem] text-color-5">
                         <motion.h1
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}
                           transition={{ delay: 0.4, duration: 0.8 }}
-                          className="w-[21.063rem] font-medium font-archivo text-[2rem] bg-[transparent] relative leading-[3.125rem] text-left inline-block p-0 z-[10] mq450:text-[1.188rem] mq450:leading-[2.5rem] whitespace-nowrap mq550:text-[1.5rem] mq550:leading-[2.5rem] mq400:text-[1.2rem] mq400:leading-[2.5rem]"
+                          className="w-full font-medium font-archivo text-[2rem] bg-[transparent] relative leading-[3.125rem] text-left inline-block p-0 z-[10] mq450:text-[1.188rem] mq450:leading-[2.5rem] whitespace-nowrap mq550:text-[1.5rem] mq550:leading-[2.5rem] mq400:text-[1.2rem] mq400:leading-[2.5rem]"
                         >
                           {item.content.heading}
                         </motion.h1>
@@ -354,24 +367,41 @@ const DigitalTranspormationRoadmap: NextPage<
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.6 }}
-                        style={{ ...div }}
-                        className="flex flex-row items-start justify-start pt-[0rem] px-[2rem] pb-[1rem] box-border text-[1.125rem] text-color-6"
+                        style={{
+                          ...div,
+                          maxWidth: '100%',
+                          overflow: 'hidden',
+                          padding: '0 1rem'
+                        }}
+                        className="w-full flex flex-row items-start justify-start pt-[0rem] pb-[1rem] box-border text-[1.125rem] text-color-6"
                       >
-                        <div className="flex flex-col items-start justify-start gap-[1rem]">
+                        <div className="w-full flex flex-col items-start justify-start gap-[1rem]">
                           {item.content.tags && (
                             <div className="relative leading-[1.875rem]">
                               {item.content.tags}
                             </div>
                           )}
-                          <div className="flex flex-col gap-[0.5rem]">
+                          <div className="w-full flex flex-col gap-[0.5rem]">
                             {item.content.description.map((desc, index) => (
                               <motion.div
+                                key={index}
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.5, duration: 0.8 }}
-                                className="flex flex-col gap-[0.5rem]"
+                                className="w-full flex flex-col gap-[0.5rem]"
+                                style={{
+                                  maxWidth: '100%',
+                                  wordWrap: 'break-word'
+                                }}
                               >
-                                <div className="w-[37.75rem] relative text-[1.125rem] leading-[1.875rem] text-color-6 inline-block mq800:w-[100%] mq400:w-[80%]" style={{ fontFamily: "Archivo" }}>
+                                <div
+                                  className="w-full relative text-[1.125rem] leading-[1.875rem] text-color-6"
+                                  style={{
+                                    fontFamily: "Archivo",
+                                    maxWidth: '100%',
+                                    wordWrap: 'break-word'
+                                  }}
+                                >
                                   {desc}
                                 </div>
                               </motion.div>
@@ -414,7 +444,6 @@ const DigitalTranspormationRoadmap: NextPage<
             </motion.div>
           ))}
         </div>
-      </div>
       </div>
     </motion.section>
   );

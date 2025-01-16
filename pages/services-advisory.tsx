@@ -81,78 +81,78 @@ const ServicesAdvisory: NextPage = () => {
         heroTitle="Service Advisory"
         homeServiceAdvisory="Home • Service • Advisory"
       />
-        <div className="max-w-[1536px] mx-auto w-full px-[4.375rem]">
-
-      <div
-        ref={ref}
-        className=" w-[48.875rem] flex flex-row items-start justify-start pt-[0rem]  pb-[11.5rem] box-border max-w-full mq800:pl-[2.188rem] mq800:pr-[2.188rem] mq800:pb-[7.5rem] mq800:box-border"
-      >
-        <motion.div
-          className="flex-1 flex flex-col items-start justify-start gap-[0.5rem] max-w-full" style={{
-            marginLeft: "-0.5rem"
-          }}
-          variants={containerVariants}
-          initial="hidden"
-          animate={controls}
-        >
-          <motion.i
-            className="w-[30.5rem] relative leading-[2.5rem] inline-block max-w-full z-[2] mq550:text-[1.188rem] mq550:leading-[2rem]"
-            variants={textVariants}
-          >
-            89% of large companies globally have a digital and AI transformation underway​.
-          </motion.i>
+      <div className="self-stretch flex flex-row items-start justify-start max-w-full w-full mb-20">
+        <div className="max-w-[1536px] mx-auto w-full px-[4.375rem] pb-[2rem]
+          mq1325:px-[2rem] 
+          ">
           <motion.div
-            className="w-[33.25rem] flex flex-col items-start justify-start gap-[1rem] max-w-full"
+            ref={ref}
+            className="flex flex-col items-start justify-start gap-[1.5rem]"
             variants={containerVariants}
+            initial="hidden"
+            animate={controls}
           >
+            <motion.i
+              className="text-[1.5rem] leading-[2.5rem] inline-block max-w-[48rem] z-[2] 
+                mq550:text-[1.188rem] mq550:leading-[2rem]"
+              variants={textVariants}
+            >
+              89% of large companies globally have a digital and AI transformation underway​.
+            </motion.i>
+            <motion.div
+              className="flex flex-col items-start justify-start gap-[1rem] max-w-[48rem]"
+              variants={containerVariants}
+            >
+              <motion.i
+                className="text-[1.5rem] leading-[2.5rem] z-[2] 
+                  mq550:text-[1.188rem] mq550:leading-[2rem]"
+                variants={textVariants}
+              >
+                However, only 31% of the expected revenue lift and 25% of expected cost savings are realised*
+              </motion.i>
+              <div className="flex flex-col items-start justify-start max-w-full text-[2rem]">
+                <motion.h2
+                  className="m-0 relative text-inherit leading-[3.125rem] inline-block italic font-normal font-inherit max-w-full z-[2] mq800:text-[1.625rem] mq800:leading-[2.5rem] mq550:text-[1.188rem] mq550:leading-[1.875rem]"
+                  variants={textVariants}
+                >
+                  At DT SYSTEMS we deliver
+                </motion.h2>
+                <motion.h2
+                  className="m-0 relative text-inherit leading-[3.125rem] italic font-semibold font-inherit z-[3] mq800:text-[1.625rem] mq800:leading-[2.5rem] mq550:text-[1.188rem] mq550:leading-[1.875rem]"
+                  variants={textVariants}
+                >
+                  MAXIMUM VALUE CAPTURE
+                </motion.h2>
+              </div>
+            </motion.div>
+            <motion.div
+              className="self-stretch flex flex-col items-start justify-start"
+              variants={containerVariants}
+            >
+              <motion.i
+                className="relative leading-[2.5rem] z-[2] mq550:text-[1.188rem] mq550:leading-[2rem]"
+                variants={textVariants}
+              >
+                by optimizing processes & managing change right through the solution lifecycle
+              </motion.i>
+            </motion.div>
             <motion.i
               className="relative leading-[2.5rem] z-[2] mq550:text-[1.188rem] mq550:leading-[2rem]"
               variants={textVariants}
             >
-              However, only 31% of the expected revenue lift and 25% of expected cost savings are realised*
-            </motion.i>
-            <div className="flex flex-col items-start justify-start max-w-full text-[2rem]">
-              <motion.h2
-                className="m-0 relative text-inherit leading-[3.125rem] inline-block italic font-normal font-inherit max-w-full z-[2] mq800:text-[1.625rem] mq800:leading-[2.5rem] mq550:text-[1.188rem] mq550:leading-[1.875rem]"
-                variants={textVariants}
-              >
-                At DT SYSTEMS we deliver
-              </motion.h2>
-              <motion.h2
-                className="m-0 relative text-inherit leading-[3.125rem] italic font-semibold font-inherit z-[3] mq800:text-[1.625rem] mq800:leading-[2.5rem] mq550:text-[1.188rem] mq550:leading-[1.875rem]"
-                variants={textVariants}
-              >
-                MAXIMUM VALUE CAPTURE
-              </motion.h2>
-            </div>
-          </motion.div>
-          <motion.div
-            className="self-stretch flex flex-col items-start justify-start"
-            variants={containerVariants}
-          >
-            <motion.i
-              className="relative leading-[2.5rem] z-[2] mq550:text-[1.188rem] mq550:leading-[2rem]"
-              variants={textVariants}
-            >
-              by optimizing processes & managing change right through the solution lifecycle
+              These services detail how our proven team can partner you in capturing maximum value by tapping on our extensive experience in building, operating & consulting tech teams.
             </motion.i>
           </motion.div>
-          <motion.i
-            className="relative leading-[2.5rem] z-[2] mq550:text-[1.188rem] mq550:leading-[2rem]"
-            variants={textVariants}
-          >
-            These services detail how our proven team can partner you in capturing maximum value by tapping on our extensive experience in building, operating & consulting tech teams.
-          </motion.i>
-        </motion.div>
+        </div>
       </div>
       <Image
-        className="w-full h-[40.75rem] absolute !m-[0] top-[38.75rem] right-[0rem] left-[0rem] max-w-full overflow-hidden shrink-0 object-cover z-[1] mq400:h-[50rem] "
+        className="w-full h-[40.75rem] absolute !m-[0] top-[38.75rem] right-[0rem] left-[0rem] 
+          max-w-full overflow-hidden shrink-0 object-cover z-[1] mq400:h-[50rem]"
         width={1440}
         height={652}
         alt=""
         src="/screenshot-20241023-231953-1@2x.png"
       />
-      </div>
       <DigitalTranspormationRoadmap />
       <Footer />
     </div>

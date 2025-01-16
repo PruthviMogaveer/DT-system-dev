@@ -161,24 +161,20 @@ const Sectors: NextPage = () => {
 
   useEffect(() => {
     const checkScreen = () => {
-      if (window.innerWidth < 768) {
+      if (window.innerWidth < 500) {
         setSection({ padding: "1.5rem" });
         setPadding({ padding: "0" });
+        
         setDiv({
           padding: "0",
           gap: "0.5rem"
         });
-        setImgStyle({ height: "auto", width: "100%" });
+        setImgStyle({ height: "30%" });
         setSecondDiv({
           gap: "1rem",
           padding: "0"
         });
-        setStyle({ fontSize: "1.2rem" });
-      } else if (window.innerWidth < 1024) {
-
-        setPadding({ padding: "1rem" });
-        setImgStyle({ height: "auto", width: "100%" });
-        setStyle({ width: "100%" });
+        setStyle({ width: "40%" });
       } else {
         setStyle({});
         setDiv({});
@@ -232,128 +228,119 @@ const Sectors: NextPage = () => {
         animate="visible"
         variants={sectionVariants}
         style={section}
-        className="self-stretch flex flex-row items-start justify-start pt-[0rem] px-[4.375rem] pb-[4.5rem] box-border max-w-full mq1325:px-[2rem] mq800:px-[1rem] mq800:pb-[3rem] mq450:px-[0.5rem] mq450:pb-[2rem] p-[1.5rem] sectorSection"
+        className="self-stretch flex flex-row items-start justify-start pt-[0rem] 
+          px-[4.375rem] pb-[4.5rem] box-border max-w-full 
+          mq1325:px-[2rem] 
+          mq800:pb-[3rem]
+          mq450:pb-[2rem] p-[4rem] mq900:p-[1.5rem]"
       >
-        <div className="max-w-[1536px] mx-auto w-full ">
-
-        <div className="w-full flex flex-col items-start justify-start gap-[2rem] mq1325:w-full mq800:w-full" data-acc-group>
-          {SectorData.map((item, index) => (
-            <motion.div
-              key={item.id}
-              custom={index}
-              variants={accordionVariants}
-              initial="hidden"
-              animate="visible"
-              style={padding}
-              className="w-full h-auto flex flex-col items-end justify-start gap-[0rem] text-[1.75rem] text-color-5 items-center mq1325:w-full mq800:w-full"
-              data-acc-item
-            >
+        <div className="max-w-[1536px] mx-auto w-full">
+          <div 
+            className="w-full flex flex-col items-start justify-start gap-[2rem]
+              mq1325:w-full
+              mq800:w-full"
+            data-acc-group
+          >
+            {SectorData.map((item, index) => (
               <motion.div
-                className="w-full h-[4.625rem] rounded-3xs bg-gray-100 flex flex-row items-center justify-between py-[0.75rem] px-[2rem] box-border cursor-pointer mq800:px-[1rem] mq450:px-[0.5rem]"
-                data-acc-header
-                onClick={() => handleAccordionToggle(item.id)}
-                whileHover={{ scale: 1.01 }}
-                transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+                key={item.id}
+                custom={index}
+                variants={accordionVariants}
+                initial="hidden"
+                animate="visible"
+                style={padding}
+                className="w-full h-auto flex flex-col justify-start gap-[0rem] text-[1.75rem] text-color-5 items-center mq1325:w-full mq800:w-full"
+                data-acc-item
               >
-                <div className={`w-[21.063rem] font-medium font-archivo text-[1.5rem] bg-[transparent] relative leading-[3.125rem] ${openAccordion === item.id ? 'text-color-5' : 'text-color-6'} text-left inline-block p-0 z-[10] mq450:text-[1.188rem] mq450:leading-[2.5rem] whitespace-nowrap`}>
-                  {item.title}
-                </div>
                 <motion.div
-                  className="h-[1.813rem] w-[0.825rem] flex items-center justify-center"
-                  animate={{ rotate: openAccordion === item.id ? 180 : 0 }}
-                  transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
+                  className="w-full h-[4.625rem] rounded-3xs bg-gray-100 flex flex-row items-center justify-between py-[0.75rem] px-[2rem] box-border cursor-pointer"
+                  data-acc-header
+                  onClick={() => handleAccordionToggle(item.id)}
+                  whileHover={{ scale: 1.01 }}
+                  transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
                 >
-                  <Image
-                    className="w-[0.825rem] h-[0.5rem] relative z-[1]"
-                    width={13}
-                    height={8}
-                    alt=""
-                    src="/vector-21.svg"
-                  />
-                </motion.div>
-              </motion.div>
-
-              <AnimatePresence mode="wait">
-                {openAccordion === item.id && (
+                  <div className={`w-[21.063rem] font-medium font-archivo text-[1.5rem] bg-[transparent] relative leading-[3.125rem] ${openAccordion === item.id ? 'text-color-5' : 'text-color-6'} text-left inline-block p-0 z-[10] mq450:text-[1.188rem] mq450:leading-[2.5rem] whitespace-nowrap`}>
+                    {item.title}
+                  </div>
                   <motion.div
-                    variants={contentVariants}
-                    initial="hidden"
-                    animate="visible"
-                    exit="exit"
-                    className="w-full flex flex-col items-center justify-start overflow-hidden
-                    mq1325:w-full
-                    mq800:w-full"
+                    className="h-[1.813rem] w-[0.825rem] flex items-center justify-center"
+                    animate={{ rotate: openAccordion === item.id ? 180 : 0 }}
+                    transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
                   >
-                    <div className="flex flex-row items-start justify-start gap-6 responsive
-                    mq1226:flex-col mq1226:w-full mq1226:flex-col w-100%" style={{ width: "100%" }}>
-                      <motion.div
-                        variants={imageVariants}
-                        initial="hidden"
-                        animate="visible"
-                        className="w-[33.25rem] relative
-                        mq1226:w-full mq1226:max-h-[400px]
-                        mq800:max-h-[600px]
-                        mq450:max-h-[800px]"
-                      >
-                        <Image
-                          style={{
-                            margin: 0,
-                            marginTop: isSmallScreen ? "1rem" : "2rem",
-                            marginLeft: isSmallScreen ? "0" : "1rem",
-                            width: isSmallScreen ? "100%" : undefined,
-                            height: isSmallScreen ? "20rem" : undefined,
+                    <Image
+                      className="w-[0.825rem] h-[0.5rem] relative z-[1]"
+                      width={13}
+                      height={8}
+                      alt=""
+                      src="/vector-21.svg"
+                    />
+                  </motion.div>
+                </motion.div>
 
-                          }}
-                          className="rounded-11xl object-cover img mq1226:w-[100%] mq1226:h-[10rem]"
-                          loading="lazy"
-                          width={532}
-                          height={400}
-                          alt=""
-                          src={item.image}
-                        />
-                      </motion.div>
-
-                      <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.3, duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-                        className="w-full grid flex-row items-start justify-start pt-[0rem] px-[0rem] pb-[0.5rem] box-border cursor-default mq1226:px-[1rem] mq800:px-[0.5rem]"
-                      >
-                        <div
-                          style={div as React.CSSProperties}
-                          className="flex flex-row items-start justify-start py-[0rem] pl-[2rem] pr-[1.937rem] box-border text-[1.75rem] text-color-5"
+                <AnimatePresence mode="wait">
+                  {openAccordion === item.id && (
+                    <motion.div
+                      variants={contentVariants}
+                      initial="hidden"
+                      animate="visible"
+                      exit="exit"
+                      className="w-full bg-white flex flex-col items-center justify-start overflow-hidden px-[2rem]
+                      "
+                    >
+                      <div className="w-full flex flex-row items-center justify-between gap-[2rem] mt-[1rem]
+                        mq1226:flex-col mq1226:gap-[1rem]">
+                        <motion.div
+                          variants={imageVariants}
+                          initial="hidden"
+                          animate="visible"
+                          className="min-w-[300px] w-[35%] flex-shrink-0 flex items-center
+                          mq1226:min-w-full mq1226:w-full"
                         >
-                          <motion.h1
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: 0.4, duration: 0.8 }}
-                            style={style as React.CSSProperties}
-                            className="w-full  font-medium font-archivo text-[2rem] bg-[transparent] relative leading-[3.125rem] text-left inline-block p-0 z-[10] 
-      whitespace-normal break-words break-all 
-      mq600:text-[1.5rem] mq600:leading-[2.5rem] 
-      mq500:text-[1.2rem] mq500:leading-[1.5rem]"
-                          >
-                            "{item.heading}"
-                          </motion.h1>
-                        </div>
+                          <Image
+                            style={{
+                              width:"100%" ,
+                              height: isSmallScreen ? "20rem" : undefined,
+                              objectFit: 'cover',
+                              borderRadius: '12px',
+                              marginTop: isSmallScreen ? "1rem" : "0"
+                            }}
+                            className="rounded-11xl"
+                            loading="lazy"
+                            width={532}
+                            height={400}
+                            alt=""
+                            src={item.image}
+                          />
+                        </motion.div>
 
+                        <motion.div
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 0.3, duration: 0.8 }}
+                          className="flex-1 min-w-0 flex flex-col items-start justify-center py-[1rem] pt-0
+                          mq1226:w-full"
+                        >
+                          <div className="w-full flex flex-col gap-[1.5rem]">
+                            <motion.h1
+                              initial={{ opacity: 0 }}
+                              animate={{ opacity: 1 }}
+                              transition={{ delay: 0.4, duration: 0.8 }}
+                              style={style as React.CSSProperties}
+                              className="w-full font-medium font-archivo text-[2rem] leading-[3.125rem]
+                              mq600:text-[1.5rem] mq600:leading-[2.5rem]
+                              mq500:text-[1.2rem] mq500:leading-[1.5rem]"
+                            >
+                              "{item.heading}"
+                            </motion.h1>
 
-                        <div style={div as React.CSSProperties} className="flex flex-row items-start justify-start pt-[0rem] px-[2rem] pb-[1rem] box-border text-[1.125rem] text-color-6">
-                          <div className="flex flex-col items-start justify-start gap-[1rem]">
+                            <div className="w-full relative text-[1.125rem] leading-[1.875rem] text-color-6 font-archivo">
+                              {item.description}
+                            </div>
+
                             <motion.div
                               initial={{ opacity: 0, y: 20 }}
                               animate={{ opacity: 1, y: 0 }}
                               transition={{ delay: 0.5, duration: 0.8 }}
-                              className="flex flex-col gap-[0.5rem]"
-                            >
-                              <div className="w-[37.75rem] relative text-[1.125rem] leading-[1.875rem] text-color-6 inline-block mq800:w-[90%]" style={{ fontFamily: "Archivo" }}>
-                                {item.description}
-                              </div>
-                            </motion.div>
-                            <motion.div
-                              initial={{ opacity: 0, y: 20 }}
-                              animate={{ opacity: 1, y: 0 }}
-                              transition={{ delay: 0.6, duration: 0.8 }}
                               className="flex flex-col gap-[0.5rem] text-[1.5rem] text-color-5"
                             >
                               <div className="relative leading-[2.5rem] font-semibold mq450:text-[1.188rem] mq450:leading-[2rem]" style={{ fontFamily: "Archivo" }}>
@@ -376,15 +363,14 @@ const Sectors: NextPage = () => {
                               </div>
                             </motion.div>
                           </div>
-                        </div>
-                      </motion.div>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
-          ))}
-        </div>
+                        </motion.div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </motion.section>
       <Footer />

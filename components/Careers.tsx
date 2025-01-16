@@ -32,12 +32,12 @@ const Careers: NextPage<CareersType> = ({ className = "" }) => {
       data-section="careers"
       className={`bg-[url('/dots.svg')] careers-section flex flex-col items-start justify-start w-full bg-color ${className}`}
     >
-      <div className="w-full max-w-[1536px] mx-auto px-[4.375rem]">
-      <div className="max-w-[90rem] w-full flex flex-col items-center justify-center relative py-[5.5rem] mq800:px-[2.188rem] mq800:py-[3.563rem]">
+      <div className="w-full max-w-[1536px] mx-auto px-[4.375rem] mq1325:px-0">
+      <div className="max-w-[90rem] w-full flex flex-col items-center justify-center relative py-[5.5rem] mq800:py-[3.563rem]">
         {/* Content Container */}
         <div className=" flex flex-row items-center justify-between w-full gap-[4rem] relative z-[2]">
           {/* Text Content */}
-          <div className=" w-[33.25rem] flex flex-col items-start justify-start gap-[1.5rem] mq1050:items-center mq1050:w-full">
+          <div className=" w-[33.25rem] flex flex-col items-start justify-start gap-[1.5rem] mq1050:items-center mq1050:w-full mq1325:px-[2rem]">
             <h1 className="m-0 text-[3.375rem] text-white leading-[120%] font-bold capitalize mq800:text-[2.688rem] mq450:text-[2rem]">
               Careers
             </h1>

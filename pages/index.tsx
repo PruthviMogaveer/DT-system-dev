@@ -34,7 +34,10 @@ const Home: NextPage = () => {
 
         <NavbarPage />
         <div className="w-full">
-        <div className="max-w-[1536px] mx-auto w-full px-[4.375rem]  ">
+        <div className="max-w-[1536px] mx-auto w-full px-[4.375rem]
+          mq1325:px-[2rem] 
+          
+          ">
 
         <div className="w-[0.063rem] h-[5.75rem] relative border-gray-600 border-r-[1px] border-solid box-border hidden z-[2]" />
         <div className="w-[0.063rem] h-[5.75rem] relative border-gray-600 border-r-[1px] border-solid box-border hidden z-[3]" />
