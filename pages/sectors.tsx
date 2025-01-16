@@ -1,12 +1,12 @@
-"use client"
+"use client";
 
 import type { NextPage } from "next";
 import { useCallback, useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence, MotionStyle } from "framer-motion";
-import NavbarPage from "../components/NavbarPage";
+import NavbarPage from "../components/Navbar";
 import Footer from "../components/Footer";
-import Heros from "../components/Heros";  // Change this import
+import Heros from "../components/Heros"; // Change this import
 
 // Define the sector data structure
 interface SectorData {
@@ -24,66 +24,71 @@ const SectorData = [
     title: "Information Technology (IT)",
     image: "/Rectangle 23800.png",
     heading: "Accelerate Digital Transformation in IT",
-    description: "IT departments face constant pressure to innovate, optimize workflows, and maintain seamless service delivery. With ServiceNow, you can transform your IT operations, streamline service management, and deliver faster, more reliable solutions. From ITSM to ITOM, our team specializes in deploying ServiceNow modules that automate workflows, reduce downtime, and enhance IT performance.",
+    description:
+      "IT departments face constant pressure to innovate, optimize workflows, and maintain seamless service delivery. With ServiceNow, you can transform your IT operations, streamline service management, and deliver faster, more reliable solutions. From ITSM to ITOM, our team specializes in deploying ServiceNow modules that automate workflows, reduce downtime, and enhance IT performance.",
     benefits: [
       "Improve service delivery with ITSM",
       "Enhance operational efficiency with ITOM",
-      "Automate routine tasks, freeing up valuable resources for innovation"
+      "Automate routine tasks, freeing up valuable resources for innovation",
     ],
-    cta: "Contact Us for ServiceNow Consultation"
+    cta: "Contact Us for ServiceNow Consultation",
   },
   {
     id: 2,
     title: "Healthcare",
     image: "/Rectangle 23804.png",
     heading: "Empowering Healthcare with Digital Workflows",
-    description: "In the healthcare sector, operational efficiency, compliance, and patient satisfaction are top priorities. With ServiceNow, we help healthcare organizations modernize their workflows, reduce manual processes, and improve care coordination. Our solutions are designed to streamline everything from patient care management to regulatory compliance, ensuring that healthcare providers can focus on delivering high-quality care.",
+    description:
+      "In the healthcare sector, operational efficiency, compliance, and patient satisfaction are top priorities. With ServiceNow, we help healthcare organizations modernize their workflows, reduce manual processes, and improve care coordination. Our solutions are designed to streamline everything from patient care management to regulatory compliance, ensuring that healthcare providers can focus on delivering high-quality care.",
     benefits: [
       "Streamline patient care coordination",
       "Improve compliance and risk management",
-      "Automate administrative tasks, freeing up more time for patient care"
+      "Automate administrative tasks, freeing up more time for patient care",
     ],
-    cta: "Contact Us for ServiceNow Consultation"
+    cta: "Contact Us for ServiceNow Consultation",
   },
   {
     id: 3,
     title: "Financial Services",
     image: "/Rectangle 23805.png",
     heading: "Enhancing Efficiency in Financial Services",
-    description: "Financial institutions operate in a fast-paced, highly regulated environment where data security, operational efficiency, and customer satisfaction are crucial. Our ServiceNow solutions are tailored to address these needs, providing tools to streamline workflows, automate compliance, and enhance customer service. With customized solutions for finance, we help you manage risk, ensure compliance, and drive operational excellence.",
+    description:
+      "Financial institutions operate in a fast-paced, highly regulated environment where data security, operational efficiency, and customer satisfaction are crucial. Our ServiceNow solutions are tailored to address these needs, providing tools to streamline workflows, automate compliance, and enhance customer service. With customized solutions for finance, we help you manage risk, ensure compliance, and drive operational excellence.",
     benefits: [
       "Automate compliance processes and reduce risks",
       "Streamline loan processing and customer service",
-      "Improve workflow efficiency across departments"
+      "Improve workflow efficiency across departments",
     ],
-    cta: "Contact Us for ServiceNow Consultation"
+    cta: "Contact Us for ServiceNow Consultation",
   },
   {
     id: 4,
     title: "Retail",
     image: "/Rectangle 23806.png",
     heading: "Transforming Retail with ServiceNow",
-    description: "In today's retail environment, businesses need to be agile, responsive, and efficient to keep up with customer expectations. ServiceNow enables retailers to enhance service delivery, optimize supply chain operations, and provide better customer support. Whether you need help with managing inventory, automating customer service, or streamlining operations, our solutions are designed to meet the unique challenges of the retail sector.",
+    description:
+      "In today's retail environment, businesses need to be agile, responsive, and efficient to keep up with customer expectations. ServiceNow enables retailers to enhance service delivery, optimize supply chain operations, and provide better customer support. Whether you need help with managing inventory, automating customer service, or streamlining operations, our solutions are designed to meet the unique challenges of the retail sector.",
     benefits: [
       "Streamline inventory management and logistics",
       "Automate customer support for faster resolution times",
-      "Enhance employee productivity through optimized workflows"
+      "Enhance employee productivity through optimized workflows",
     ],
-    cta: "Contact Us for ServiceNow Consultation"
+    cta: "Contact Us for ServiceNow Consultation",
   },
   {
     id: 5,
     title: "Government",
     image: "/govt.png",
     heading: "Driving Efficiency in Government Services",
-    description: "Government agencies are under constant pressure to do more with less, while improving service delivery and adhering to strict compliance standards. ServiceNow offers solutions to automate administrative tasks, improve service management, and ensure secure, scalable workflows. Our solutions help government agencies modernize their IT operations, improve citizen services, and manage risk more effectively.",
+    description:
+      "Government agencies are under constant pressure to do more with less, while improving service delivery and adhering to strict compliance standards. ServiceNow offers solutions to automate administrative tasks, improve service management, and ensure secure, scalable workflows. Our solutions help government agencies modernize their IT operations, improve citizen services, and manage risk more effectively.",
     benefits: [
       "Improve citizen service delivery",
       "Automate administrative processes to reduce costs",
-      "Ensure secure, compliant workflows across departments"
+      "Ensure secure, compliant workflows across departments",
     ],
-    cta: "Contact Us for ServiceNow Consultation"
-  }
+    cta: "Contact Us for ServiceNow Consultation",
+  },
 ];
 
 const Sectors: NextPage = () => {
@@ -96,8 +101,8 @@ const Sectors: NextPage = () => {
       transition: {
         duration: 1.2,
         ease: [0.25, 0.1, 0.25, 1],
-      }
-    }
+      },
+    },
   };
 
   const accordionVariants = {
@@ -109,8 +114,8 @@ const Sectors: NextPage = () => {
         duration: 1,
         delay: index * 0.2,
         ease: [0.25, 0.1, 0.25, 1],
-      }
-    })
+      },
+    }),
   };
 
   const contentVariants = {
@@ -121,7 +126,7 @@ const Sectors: NextPage = () => {
       transition: {
         duration: 0.8,
         ease: [0.25, 0.1, 0.25, 1],
-      }
+      },
     },
     exit: {
       opacity: 0,
@@ -129,8 +134,8 @@ const Sectors: NextPage = () => {
       transition: {
         duration: 0.6,
         ease: [0.25, 0.1, 0.25, 1],
-      }
-    }
+      },
+    },
   };
 
   const imageVariants = {
@@ -141,8 +146,8 @@ const Sectors: NextPage = () => {
       transition: {
         duration: 1,
         ease: [0.25, 0.1, 0.25, 1],
-      }
-    }
+      },
+    },
   };
 
   // Refs and state
@@ -164,15 +169,15 @@ const Sectors: NextPage = () => {
       if (window.innerWidth < 500) {
         setSection({ padding: "1.5rem" });
         setPadding({ padding: "0" });
-        
+
         setDiv({
           padding: "0",
-          gap: "0.5rem"
+          gap: "0.5rem",
         });
         setImgStyle({ height: "30%" });
         setSecondDiv({
           gap: "1rem",
-          padding: "0"
+          padding: "0",
         });
         setStyle({ width: "40%" });
       } else {
@@ -208,17 +213,20 @@ const Sectors: NextPage = () => {
     };
 
     updateScreenSize();
-    window.addEventListener('resize', updateScreenSize);
-    return () => window.removeEventListener('resize', updateScreenSize);
+    window.addEventListener("resize", updateScreenSize);
+    return () => window.removeEventListener("resize", updateScreenSize);
   }, []);
 
   return (
     <div className="w-full relative bg-white overflow-hidden flex flex-col items-start justify-start leading-[normal] tracking-[normal]">
-      <div style={{ height: "110px", width: "100%", backgroundColor: "#112e11f0" }} >
-        <div className=" mt-[2rem] mq1240:mt-[3rem]"><NavbarPage /></div>
+      <div
+        style={{ height: "110px", width: "100%", backgroundColor: "#112e11f0" }}
+      >
+        <div className=" mt-[2rem] mq1240:mt-[3rem]">
+          <NavbarPage />
+        </div>
       </div>
       <Heros
-        
         teamworkWithBusinessPeople="/maleleadertalkingtoemployeesshowingtheplan20231127050345utc@2x.png"
         heroTitle="Sectors"
         homeServiceAdvisory="Home • Sectors"
@@ -235,7 +243,7 @@ const Sectors: NextPage = () => {
           mq450:pb-[2rem] p-[4rem] mq900:p-[1.5rem]"
       >
         <div className="max-w-[1536px] mx-auto w-full">
-          <div 
+          <div
             className="w-full flex flex-col items-start justify-start gap-[2rem]
               mq1325:w-full
               mq800:w-full"
@@ -259,7 +267,13 @@ const Sectors: NextPage = () => {
                   whileHover={{ scale: 1.01 }}
                   transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
                 >
-                  <div className={`w-[21.063rem] font-medium font-archivo text-[1.5rem] bg-[transparent] relative leading-[3.125rem] ${openAccordion === item.id ? 'text-color-5' : 'text-color-6'} text-left inline-block p-0 z-[10] mq450:text-[1.188rem] mq450:leading-[2.5rem] whitespace-nowrap`}>
+                  <div
+                    className={`w-[21.063rem] font-medium font-archivo text-[1.5rem] bg-[transparent] relative leading-[3.125rem] ${
+                      openAccordion === item.id
+                        ? "text-color-5"
+                        : "text-color-6"
+                    } text-left inline-block p-0 z-[10] mq450:text-[1.188rem] mq450:leading-[2.5rem] whitespace-nowrap`}
+                  >
                     {item.title}
                   </div>
                   <motion.div
@@ -287,8 +301,10 @@ const Sectors: NextPage = () => {
                       className="w-full bg-white flex flex-col items-center justify-start overflow-hidden px-[2rem]
                       "
                     >
-                      <div className="w-full flex flex-row items-center justify-between gap-[2rem] mt-[1rem]
-                        mq1226:flex-col mq1226:gap-[1rem]">
+                      <div
+                        className="w-full flex flex-row items-center justify-between gap-[2rem] mt-[1rem]
+                        mq1226:flex-col mq1226:gap-[1rem]"
+                      >
                         <motion.div
                           variants={imageVariants}
                           initial="hidden"
@@ -298,11 +314,11 @@ const Sectors: NextPage = () => {
                         >
                           <Image
                             style={{
-                              width:"100%" ,
+                              width: "100%",
                               height: isSmallScreen ? "20rem" : undefined,
-                              objectFit: 'cover',
-                              borderRadius: '12px',
-                              marginTop: isSmallScreen ? "1rem" : "0"
+                              objectFit: "cover",
+                              borderRadius: "12px",
+                              marginTop: isSmallScreen ? "1rem" : "0",
                             }}
                             className="rounded-11xl"
                             loading="lazy"
@@ -343,22 +359,31 @@ const Sectors: NextPage = () => {
                               transition={{ delay: 0.5, duration: 0.8 }}
                               className="flex flex-col gap-[0.5rem] text-[1.5rem] text-color-5"
                             >
-                              <div className="relative leading-[2.5rem] font-semibold mq450:text-[1.188rem] mq450:leading-[2rem]" style={{ fontFamily: "Archivo" }}>
+                              <div
+                                className="relative leading-[2.5rem] font-semibold mq450:text-[1.188rem] mq450:leading-[2rem]"
+                                style={{ fontFamily: "Archivo" }}
+                              >
                                 Benefits
                               </div>
                               <div className="relative text-[1.125rem] leading-[150%] text-color-6">
                                 <ul className="m-0 font-inherit text-inherit pl-[1.333rem]">
-                                  {item.benefits.map((benefit, benefitIndex) => (
-                                    <motion.li
-                                      key={benefitIndex}
-                                      initial={{ opacity: 0, x: -20 }}
-                                      animate={{ opacity: 1, x: 0 }}
-                                      transition={{ delay: 0.7 + benefitIndex * 0.2, duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-                                      style={{ fontFamily: "Archivo" }}
-                                    >
-                                      {benefit}
-                                    </motion.li>
-                                  ))}
+                                  {item.benefits.map(
+                                    (benefit, benefitIndex) => (
+                                      <motion.li
+                                        key={benefitIndex}
+                                        initial={{ opacity: 0, x: -20 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        transition={{
+                                          delay: 0.7 + benefitIndex * 0.2,
+                                          duration: 0.8,
+                                          ease: [0.25, 0.1, 0.25, 1],
+                                        }}
+                                        style={{ fontFamily: "Archivo" }}
+                                      >
+                                        {benefit}
+                                      </motion.li>
+                                    )
+                                  )}
                                 </ul>
                               </div>
                             </motion.div>
@@ -379,4 +404,3 @@ const Sectors: NextPage = () => {
 };
 
 export default Sectors;
-

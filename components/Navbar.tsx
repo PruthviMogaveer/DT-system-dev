@@ -232,14 +232,14 @@ const NavbarPage: NextPage<NavbarPageType> = ({ className = "" }) => {
                         }}
                       >
                         <a
-                          href="/services-advisory"
+                          href="/service/advisory"
                           className="block py-2 px-4 text-gray-800 hover:bg-orange-200 cursor-pointer whitespace-nowrap"
                           style={{ textDecoration: "none" }}
                         >
                           Advisory
                         </a>
                         <a
-                          href="/ServicesImplementation"
+                          href="/service/implementation"
                           className="block py-2 px-4 text-gray-800 hover:bg-orange-200 cursor-pointer whitespace-nowrap"
                           style={{ textDecoration: "none" }}
                         >
@@ -413,7 +413,7 @@ const NavbarPage: NextPage<NavbarPageType> = ({ className = "" }) => {
                       Resources
                     </a>
                     <Image
-                      className={`w-[0.456rem] h-[0.275rem] relative transition-transform duration-300 ${
+                      className={`w-[0.588rem] h-[0.356rem] relative transition-transform duration-300 ${
                         resourceDropdown ? "rotate-180" : ""
                       }`}
                       width={7}

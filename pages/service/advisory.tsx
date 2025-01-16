@@ -2,10 +2,10 @@ import type { NextPage } from "next";
 import { useCallback, useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import Heros from "../components/Heros";
-import DigitalTranspormationRoadmap from "../components/DigitalTranspormationRoadmap";
-import NavbarPage from "../components/NavbarPage";
-import Footer from "../components/Footer";
+import Heros from "../../components/Heros";
+import DigitalTranspormationRoadmap from "../../components/AdvisoryAccordion";
+import NavbarPage from "../../components/Navbar";
+import Footer from "../../components/Footer";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 const ServicesAdvisory: NextPage = () => {
@@ -13,7 +13,7 @@ const ServicesAdvisory: NextPage = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isInView, setIsInView] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
-  const [containerHeight, setContainerHeight] = useState('150vh');
+  const [containerHeight, setContainerHeight] = useState("150vh");
 
   const onDTSYSTEMSClick = useCallback(() => {
     router.push("/home");
@@ -21,7 +21,7 @@ const ServicesAdvisory: NextPage = () => {
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start start", "end end"]
+    offset: ["start start", "end end"],
   });
 
   useEffect(() => {
@@ -31,31 +31,34 @@ const ServicesAdvisory: NextPage = () => {
       const rect = containerRef.current.getBoundingClientRect();
       const containerHeight = containerRef.current.clientHeight;
       const scrollPoint = window.innerHeight;
-      
+
       // Calculate scroll progress through the section
-      const progress = Math.min(Math.max(-rect.top / (containerHeight - scrollPoint), 0), 1);
+      const progress = Math.min(
+        Math.max(-rect.top / (containerHeight - scrollPoint), 0),
+        1
+      );
       setScrollProgress(progress);
 
       // Determine when to fix/unfix the section
-      if (rect.top <= 0 && -rect.top < (containerHeight - scrollPoint)) {
+      if (rect.top <= 0 && -rect.top < containerHeight - scrollPoint) {
         setIsInView(true);
       } else {
         setIsInView(false);
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
     const updateHeight = () => {
-      setContainerHeight(window.innerWidth >= 768 ? '150vh' : '140vh');
+      setContainerHeight(window.innerWidth >= 768 ? "150vh" : "140vh");
     };
 
     updateHeight();
-    window.addEventListener('resize', updateHeight);
-    return () => window.removeEventListener('resize', updateHeight);
+    window.addEventListener("resize", updateHeight);
+    return () => window.removeEventListener("resize", updateHeight);
   }, []);
 
   const text1Opacity = useTransform(scrollYProgress, [0, 0.2], [0, 1]);
@@ -64,37 +67,45 @@ const ServicesAdvisory: NextPage = () => {
   const text4Opacity = useTransform(scrollYProgress, [0.6, 0.8], [0, 1]);
   const text5Opacity = useTransform(scrollYProgress, [0.8, 1], [0, 1]);
 
-  const translateY = isInView ? 0 : scrollProgress > 0.5 ? (scrollProgress - 0.5) * 100 : 0;
+  const translateY = isInView
+    ? 0
+    : scrollProgress > 0.5
+    ? (scrollProgress - 0.5) * 100
+    : 0;
 
   return (
     <div className="w-full relative bg-white overflow-hidden flex flex-col items-start justify-start leading-[normal] tracking-[normal] text-left text-[1.5rem] text-white font-archivo">
-      <div style={{ height: "110px", width: "100%", backgroundColor: "#112e11f0" }}>
-        <div className="mt-[2rem] mq1240:mt-[3rem]"><NavbarPage /></div>
+      <div
+        style={{ height: "110px", width: "100%", backgroundColor: "#112e11f0" }}
+      >
+        <div className="mt-[2rem] mq1240:mt-[3rem]">
+          <NavbarPage />
+        </div>
       </div>
-      
+
       <Heros
         teamworkWithBusinessPeople="/hero.png"
         heroTitle="Service Advisory"
         homeServiceAdvisory="Home • Service • Advisory"
       />
 
-      <div 
+      <div
         ref={containerRef}
         className="w-full relative"
-        style={{ 
+        style={{
           height: containerHeight,
           marginTop: "-5rem",
         }}
       >
-        <motion.div 
+        <motion.div
           className="w-full"
-          style={{ 
-            position: isInView ? 'fixed' : 'absolute',
-            top: isInView ? 0 : 'auto',
+          style={{
+            position: isInView ? "fixed" : "absolute",
+            top: isInView ? 0 : "auto",
             left: 0,
             right: 0,
             zIndex: 10,
-            transform: `translateY(${translateY}vh)`
+            transform: `translateY(${translateY}vh)`,
           }}
         >
           {/* Add max-width container */}
@@ -106,22 +117,25 @@ const ServicesAdvisory: NextPage = () => {
               alt=""
               src="/screenshot-20241023-231953-1@2x.png"
             />
-            
-            
-            <div className="absolute inset-0 flex flex-col justify-center px-[4.375rem] gap-4
-              mq1325:px-[2rem] max-w-[35rem]">
+
+            <div
+              className="absolute inset-0 flex flex-col justify-center px-[4.375rem] gap-4
+              mq1325:px-[2rem] max-w-[35rem]"
+            >
               <motion.i
                 style={{ opacity: text1Opacity }}
                 className="relative leading-[2rem] text-[1.25rem] mq550:text-[0.90rem] mq550:leading-[1.25rem]"
               >
-                89% of large companies globally have a digital and AI transformation underway​.
+                89% of large companies globally have a digital and AI
+                transformation underway​.
               </motion.i>
 
               <motion.i
                 style={{ opacity: text2Opacity }}
                 className="relative leading-[2rem] text-[1.25rem] mq550:text-[0.90rem] mq550:leading-[1.25rem]"
               >
-                However, only 31% of the expected revenue lift and 25% of expected cost savings are realized*
+                However, only 31% of the expected revenue lift and 25% of
+                expected cost savings are realized*
               </motion.i>
 
               <motion.div
@@ -140,21 +154,26 @@ const ServicesAdvisory: NextPage = () => {
                 style={{ opacity: text4Opacity }}
                 className="relative leading-[2rem] text-[1.25rem] mq550:text-[0.90rem] mq550:leading-[1.25rem]"
               >
-                by optimizing processes & managing change right through the solution lifecycle
+                by optimizing processes & managing change right through the
+                solution lifecycle
               </motion.i>
 
               <motion.i
                 style={{ opacity: text5Opacity }}
                 className="relative leading-[2rem] text-[1.25rem] mq550:text-[0.90rem] mq550:leading-[1.25rem]"
               >
-                These services detail how our proven team can partner you in capturing maximum value by tapping on our extensive experience in building, operating & consulting tech teams.
+                These services detail how our proven team can partner you in
+                capturing maximum value by tapping on our extensive experience
+                in building, operating & consulting tech teams.
               </motion.i>
             </div>
           </div>
         </motion.div>
       </div>
 
-      <div className="mt-[-10vh] w-full"> {/* changed from -18vh to -10vh */}
+      <div className="mt-[-10vh] w-full">
+        {" "}
+        {/* changed from -18vh to -10vh */}
         <div className="max-w-[1536px] mx-auto">
           <DigitalTranspormationRoadmap />
         </div>
