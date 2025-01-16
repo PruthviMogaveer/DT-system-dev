@@ -330,7 +330,8 @@ const DigitalTranspormationRoadmap: NextPage<
                       className="w-full grid flex-row items-start justify-start pt-[0rem] px-[0rem] pb-[0.5rem] box-border cursor-default"
                       style={{
                         maxWidth: '100%',
-                        overflow: 'hidden'
+                        overflow: 'hidden',
+                        width: '100%' // Added to ensure full width
                       }}
                     >
                       {isSmallScreen && (
@@ -341,6 +342,7 @@ const DigitalTranspormationRoadmap: NextPage<
                               marginTop: isSmallScreen ? "1rem" : "2rem",
                               width: "100%",
                               height: isSmallScreen ? "20rem" : undefined,
+                              minWidth: '100%' // Added to prevent shrinking
                             }}
                             className="rounded-11xl object-cover img mq1226:w-[100%] mq1226:h-[10rem] advisoryImage"
                             loading="lazy"
@@ -352,91 +354,94 @@ const DigitalTranspormationRoadmap: NextPage<
                         </div>
                       )}
 
-                      <div className="w-full flex flex-row items-start justify-start py-[0rem] pr-[1.937rem] box-border text-[1.75rem] text-color-5">
-                        <motion.h1
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          transition={{ delay: 0.4, duration: 0.8 }}
-                          className="w-full font-medium font-archivo text-[2rem] bg-[transparent] relative leading-[3.125rem] text-left inline-block p-0 z-[10] mq450:text-[1.188rem] mq450:leading-[2.5rem] whitespace-nowrap mq550:text-[1.5rem] mq550:leading-[2.5rem] mq400:text-[1.2rem] mq400:leading-[2.5rem]"
-                        >
-                          {item.content.heading}
-                        </motion.h1>
-                      </div>
+                      <div className="w-full flex flex-col items-start justify-start gap-[1rem] min-w-full px-[0.5rem]" style={{ boxSizing: 'border-box' }}>
+                        {/* Rest of the content */}
+                        <div className="w-full flex flex-row items-start justify-start py-[0rem] pr-[1.937rem] box-border text-[1.75rem] text-color-5">
+                          <motion.h1
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.4, duration: 0.8 }}
+                            className="w-full font-medium font-archivo text-[2rem] bg-[transparent] relative leading-[3.125rem] text-left inline-block p-0 z-[10] mq450:text-[1.188rem] mq450:leading-[2.5rem] whitespace-nowrap mq550:text-[1.5rem] mq550:leading-[2.5rem] mq400:text-[1.2rem] mq400:leading-[2.5rem]"
+                          >
+                            {item.content.heading}
+                          </motion.h1>
+                        </div>
 
-                      <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.6 }}
-                        style={{
-                          ...div,
-                          maxWidth: '100%',
-                          overflow: 'hidden',
-                          padding: '0 1rem'
-                        }}
-                        className="w-full flex flex-row items-start justify-start pt-[0rem] pb-[1rem] box-border text-[1.125rem] text-color-6"
-                      >
-                        <div className="w-full flex flex-col items-start justify-start gap-[1rem]">
-                          {item.content.tags && (
-                            <div className="relative leading-[1.875rem]">
-                              {item.content.tags}
-                            </div>
-                          )}
-                          <div className="w-full flex flex-col gap-[0.5rem]">
-                            {item.content.description.map((desc, index) => (
-                              <motion.div
-                                key={index}
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.5, duration: 0.8 }}
-                                className="w-full flex flex-col gap-[0.5rem]"
-                                style={{
-                                  maxWidth: '100%',
-                                  wordWrap: 'break-word'
-                                }}
-                              >
-                                <div
-                                  className="w-full relative text-[1.125rem] leading-[1.875rem] text-color-6"
+                        <motion.div
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 0.6 }}
+                          style={{
+                            ...div,
+                            maxWidth: '100%',
+                            overflow: 'hidden',
+                            padding: '0 1rem'
+                          }}
+                          className="w-full flex flex-row items-start justify-start pt-[0rem] pb-[1rem] box-border text-[1.125rem] text-color-6"
+                        >
+                          <div className="w-full flex flex-col items-start justify-start gap-[1rem]">
+                            {item.content.tags && (
+                              <div className="relative leading-[1.875rem]">
+                                {item.content.tags}
+                              </div>
+                            )}
+                            <div className="w-full flex flex-col gap-[0.5rem]">
+                              {item.content.description.map((desc, index) => (
+                                <motion.div
+                                  key={index}
+                                  initial={{ opacity: 0, y: 20 }}
+                                  animate={{ opacity: 1, y: 0 }}
+                                  transition={{ delay: 0.5, duration: 0.8 }}
+                                  className="w-full flex flex-col gap-[0.5rem]"
                                   style={{
-                                    fontFamily: "Archivo",
                                     maxWidth: '100%',
                                     wordWrap: 'break-word'
                                   }}
                                 >
-                                  {desc}
-                                </div>
-                              </motion.div>
-                            ))}
-                          </div>
-                          <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.6, duration: 0.8 }}
-                            className="flex flex-col gap-[0.5rem] text-[1.5rem] text-color-5 mq400:w-[80%]"
-                          >
-                            <div className="relative leading-[2.5rem] font-semibold mq450:text-[1.188rem] mq450:leading-[2rem]" style={{ fontFamily: "Archivo" }}>
-                              Benefits
-                            </div>
-                            <div className="relative text-[1.125rem] leading-[150%] text-color-6">
-                              <ul className="m-0 font-inherit text-inherit pl-[1.333rem]" style={{ fontFamily: "Archivo" }}>
-                                {item.content.benefits.map((benefit, index) => (
-                                  <motion.li
-                                    key={index}
-                                    initial={{ opacity: 0, x: -15 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    transition={{
-                                      duration: 1,
-                                      delay: 1.5 + index * 0.7,
-                                      ease: [0.5, 0.3, 0.5, 1.3]
+                                  <div
+                                    className="w-full relative text-[1.125rem] leading-[1.875rem] text-color-6"
+                                    style={{
+                                      fontFamily: "Archivo",
+                                      maxWidth: '100%',
+                                      wordWrap: 'break-word'
                                     }}
                                   >
-                                    {benefit}
-                                  </motion.li>
-                                ))}
-                              </ul>
+                                    {desc}
+                                  </div>
+                                </motion.div>
+                              ))}
                             </div>
-                          </motion.div>
-                        </div>
-                      </motion.div>
+                            <motion.div
+                              initial={{ opacity: 0, y: 20 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ delay: 0.6, duration: 0.8 }}
+                              className="flex flex-col gap-[0.5rem] text-[1.5rem] text-color-5 mq400:w-[80%]"
+                            >
+                              <div className="relative leading-[2.5rem] font-semibold mq450:text-[1.188rem] mq450:leading-[2rem]" style={{ fontFamily: "Archivo" }}>
+                                Benefits
+                              </div>
+                              <div className="relative text-[1.125rem] leading-[150%] text-color-6">
+                                <ul className="m-0 font-inherit text-inherit pl-[1.333rem]" style={{ fontFamily: "Archivo" }}>
+                                  {item.content.benefits.map((benefit, index) => (
+                                    <motion.li
+                                      key={index}
+                                      initial={{ opacity: 0, x: -15 }}
+                                      animate={{ opacity: 1, x: 0 }}
+                                      transition={{
+                                        duration: 1,
+                                        delay: 1.5 + index * 0.7,
+                                        ease: [0.5, 0.3, 0.5, 1.3]
+                                      }}
+                                    >
+                                      {benefit}
+                                    </motion.li>
+                                  ))}
+                                </ul>
+                              </div>
+                            </motion.div>
+                          </div>
+                        </motion.div>
+                      </div>
                     </motion.div>
                   )}
                 </AnimatePresence>

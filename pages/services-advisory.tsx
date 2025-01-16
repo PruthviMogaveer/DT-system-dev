@@ -13,6 +13,7 @@ const ServicesAdvisory: NextPage = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isInView, setIsInView] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [containerHeight, setContainerHeight] = useState('150vh');
 
   const onDTSYSTEMSClick = useCallback(() => {
     router.push("/home");
@@ -47,6 +48,16 @@ const ServicesAdvisory: NextPage = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    const updateHeight = () => {
+      setContainerHeight(window.innerWidth >= 768 ? '150vh' : '140vh');
+    };
+
+    updateHeight();
+    window.addEventListener('resize', updateHeight);
+    return () => window.removeEventListener('resize', updateHeight);
+  }, []);
+
   const text1Opacity = useTransform(scrollYProgress, [0, 0.2], [0, 1]);
   const text2Opacity = useTransform(scrollYProgress, [0.2, 0.4], [0, 1]);
   const text3Opacity = useTransform(scrollYProgress, [0.4, 0.6], [0, 1]);
@@ -71,7 +82,7 @@ const ServicesAdvisory: NextPage = () => {
         ref={containerRef}
         className="w-full relative"
         style={{ 
-          height: "200vh",
+          height: containerHeight,
           marginTop: "-5rem",
         }}
       >
@@ -144,7 +155,7 @@ const ServicesAdvisory: NextPage = () => {
         </motion.div>
       </div>
 
-      <div className="mt-[-18vh] w-full">
+      <div className="mt-[-10vh] w-full"> {/* changed from -18vh to -10vh */}
         <div className="max-w-[1536px] mx-auto">
           <DigitalTranspormationRoadmap />
         </div>
@@ -153,5 +164,4 @@ const ServicesAdvisory: NextPage = () => {
     </div>
   );
 };
-
 export default ServicesAdvisory;
