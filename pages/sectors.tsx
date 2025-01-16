@@ -317,7 +317,7 @@ const Sectors: NextPage = () => {
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: 0.3, duration: 0.8 }}
-                          className="flex-1 min-w-0 flex flex-col items-start justify-center py-[1rem] pt-0
+                          className="flex-1 min-w-0 flex flex-col items-start justify-center py-[1rem] relative -top-5
                           mq1226:w-full"
                         >
                           <div className="w-full flex flex-col gap-[1.5rem]">
