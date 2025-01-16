@@ -26,12 +26,10 @@ const Footer: NextPage<FooterType> = ({ className = "" }) => {
 
   return (
     <footer
-      className={`self-stretch bg-ghostwhite flex flex-col items-start justify-start pt-[5.5rem] px-[4.375rem] pb-[2.812rem] box-border gap-[2.062rem] max-w-full text-left text-[1.125rem] text-gray-300 font-archivo 
-      lg:px-8 md:px-6 sm:px-4 
+      className={`self-stretch bg-ghostwhite flex flex-col items-start justify-start pt-[5.5rem] px-[4.375rem] mq1350:px-[2rem] pb-[2.812rem] box-border gap-[2.062rem] max-w-full text-left text-[1.125rem] text-gray-300 font-archivo
       md:pt-16 sm:pt-12
       md:pb-8 sm:pb-6
-      max-[450px]:px-4
-      max-[450px]:pt-10
+  
       ${className}`}
     >
       <div className="max-w-[1536px] mx-auto w-full flex flex-col items-start justify-start box-border gap-[2.062rem] text-left text-[1.125rem] text-gray-300 font-archivo">

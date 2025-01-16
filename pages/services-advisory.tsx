@@ -1,160 +1,155 @@
 import type { NextPage } from "next";
-import { useCallback } from "react";
+import { useCallback, useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import Heros from "../components/Heros";
 import DigitalTranspormationRoadmap from "../components/DigitalTranspormationRoadmap";
 import NavbarPage from "../components/NavbarPage";
 import Footer from "../components/Footer";
-import { motion, useAnimation } from "framer-motion";
-import { useEffect } from "react";
-import { useInView } from "react-intersection-observer";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 const ServicesAdvisory: NextPage = () => {
   const router = useRouter();
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [isInView, setIsInView] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   const onDTSYSTEMSClick = useCallback(() => {
     router.push("/home");
   }, [router]);
 
-  const controls = useAnimation();
-  const { ref, inView } = useInView({
-    threshold: 0.1,
-    triggerOnce: false, // Trigger every time the section comes into view
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"]
   });
 
   useEffect(() => {
-    if (inView) {
-      controls.start("visible");
-    } else {
-      controls.start("hidden");
-    }
-  }, [controls, inView]);
+    const handleScroll = () => {
+      if (!containerRef.current) return;
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.3, // Slight delay between child animations
-        delayChildren: 0.2, // Initial delay for smoother appearance
-      },
-    },
-  };
+      const rect = containerRef.current.getBoundingClientRect();
+      const containerHeight = containerRef.current.clientHeight;
+      const scrollPoint = window.innerHeight;
+      
+      // Calculate scroll progress through the section
+      const progress = Math.min(Math.max(-rect.top / (containerHeight - scrollPoint), 0), 1);
+      setScrollProgress(progress);
 
-  const textVariants = {
-    hidden: { opacity: 0, y: 70 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 1.2, ease: "easeInOut" },
-    },
-  };
+      // Determine when to fix/unfix the section
+      if (rect.top <= 0 && -rect.top < (containerHeight - scrollPoint)) {
+        setIsInView(true);
+      } else {
+        setIsInView(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const text1Opacity = useTransform(scrollYProgress, [0, 0.2], [0, 1]);
+  const text2Opacity = useTransform(scrollYProgress, [0.2, 0.4], [0, 1]);
+  const text3Opacity = useTransform(scrollYProgress, [0.4, 0.6], [0, 1]);
+  const text4Opacity = useTransform(scrollYProgress, [0.6, 0.8], [0, 1]);
+  const text5Opacity = useTransform(scrollYProgress, [0.8, 1], [0, 1]);
+
+  const translateY = isInView ? 0 : scrollProgress > 0.5 ? (scrollProgress - 0.5) * 100 : 0;
 
   return (
     <div className="w-full relative bg-white overflow-hidden flex flex-col items-start justify-start leading-[normal] tracking-[normal] text-left text-[1.5rem] text-white font-archivo">
-      <div className="hidden flex-row items-start justify-start gap-[1.5rem] z-[0]">
-        <div className="rounded-29xl border-gray-550 border-[1px] border-solid flex flex-row items-center justify-center py-[0.625rem] px-[0.687rem]">
-          <Image
-            className="h-[2rem] w-[2rem] relative overflow-hidden shrink-0"
-            width={32}
-            height={32}
-            alt=""
-            src="/arrowleft.svg"
-          />
-        </div>
-        <div className="rounded-29xl bg-blue flex flex-row items-center justify-center p-[0.75rem]">
-          <Image
-            className="h-[2rem] w-[2rem] relative overflow-hidden shrink-0"
-            width={32}
-            height={32}
-            alt=""
-            src="/arrowright.svg"
-          />
-        </div>
+      <div style={{ height: "110px", width: "100%", backgroundColor: "#112e11f0" }}>
+        <div className="mt-[2rem] mq1240:mt-[3rem]"><NavbarPage /></div>
       </div>
-      <div style={{ height: "110px", width: "100%", backgroundColor: "#112e11f0" }} >
-        <div className=" mt-[2rem] mq1240:mt-[3rem]"><NavbarPage /></div>
-      </div>
+      
       <Heros
         teamworkWithBusinessPeople="/hero.png"
         heroTitle="Service Advisory"
         homeServiceAdvisory="Home • Service • Advisory"
       />
-      <div className="self-stretch flex flex-row items-start justify-start max-w-full w-full mb-20">
-        <div className="max-w-[1536px] mx-auto w-full px-[4.375rem] pb-[2rem]
-          mq1325:px-[2rem] 
-          ">
-          <motion.div
-            ref={ref}
-            className="flex flex-col items-start justify-start gap-[1.5rem]"
-            variants={containerVariants}
-            initial="hidden"
-            animate={controls}
-          >
-            <motion.i
-              className="text-[1.5rem] leading-[2.5rem] inline-block max-w-[48rem] z-[2] 
-                mq550:text-[1.188rem] mq550:leading-[2rem]"
-              variants={textVariants}
-            >
-              89% of large companies globally have a digital and AI transformation underway​.
-            </motion.i>
-            <motion.div
-              className="flex flex-col items-start justify-start gap-[1rem] max-w-[48rem]"
-              variants={containerVariants}
-            >
+
+      <div 
+        ref={containerRef}
+        className="w-full relative"
+        style={{ 
+          height: "200vh",
+          marginTop: "-5rem",
+        }}
+      >
+        <motion.div 
+          className="w-full"
+          style={{ 
+            position: isInView ? 'fixed' : 'absolute',
+            top: isInView ? 0 : 'auto',
+            left: 0,
+            right: 0,
+            zIndex: 10,
+            transform: `translateY(${translateY}vh)`
+          }}
+        >
+          {/* Add max-width container */}
+          <div className="max-w-[1536px] mx-auto w-full relative h-[600px]">
+            <Image
+              className="w-full h-full object-cover"
+              width={1440}
+              height={600}
+              alt=""
+              src="/screenshot-20241023-231953-1@2x.png"
+            />
+            
+            <div className="absolute inset-0 bg-black bg-opacity-50" />
+            
+            <div className="absolute inset-0 flex flex-col justify-center px-[4.375rem] gap-4
+              mq1325:px-[2rem] ">
               <motion.i
-                className="text-[1.5rem] leading-[2.5rem] z-[2] 
-                  mq550:text-[1.188rem] mq550:leading-[2rem]"
-                variants={textVariants}
+                style={{ opacity: text1Opacity }}
+                className="relative leading-[2rem] text-[1.25rem] mq550:text-[0.90rem] mq550:leading-[1.25rem]"
               >
-                However, only 31% of the expected revenue lift and 25% of expected cost savings are realised*
+                89% of large companies globally have a digital and AI transformation underway​.
               </motion.i>
-              <div className="flex flex-col items-start justify-start max-w-full text-[2rem]">
-                <motion.h2
-                  className="m-0 relative text-inherit leading-[3.125rem] inline-block italic font-normal font-inherit max-w-full z-[2] mq800:text-[1.625rem] mq800:leading-[2.5rem] mq550:text-[1.188rem] mq550:leading-[1.875rem]"
-                  variants={textVariants}
-                >
-                  At DT SYSTEMS we deliver
-                </motion.h2>
-                <motion.h2
-                  className="m-0 relative text-inherit leading-[3.125rem] italic font-semibold font-inherit z-[3] mq800:text-[1.625rem] mq800:leading-[2.5rem] mq550:text-[1.188rem] mq550:leading-[1.875rem]"
-                  variants={textVariants}
-                >
-                  MAXIMUM VALUE CAPTURE
-                </motion.h2>
-              </div>
-            </motion.div>
-            <motion.div
-              className="self-stretch flex flex-col items-start justify-start"
-              variants={containerVariants}
-            >
+
               <motion.i
-                className="relative leading-[2.5rem] z-[2] mq550:text-[1.188rem] mq550:leading-[2rem]"
-                variants={textVariants}
+                style={{ opacity: text2Opacity }}
+                className="relative leading-[2rem] text-[1.25rem] mq550:text-[0.90rem] mq550:leading-[1.25rem]"
+              >
+                However, only 31% of the expected revenue lift and 25% of expected cost savings are realized*
+              </motion.i>
+
+              <motion.div
+                style={{ opacity: text3Opacity }}
+                className="flex flex-col gap-2"
+              >
+                <h2 className="m-0 relative text-[1.75rem] leading-[2.5rem] mq550:text-[1.30rem] mq550:leading-[1.60rem] italic font-normal">
+                  At DT SYSTEMS we deliver
+                </h2>
+                <h2 className="m-0 relative text-[1.75rem] leading-[2.5rem] italic font-semibold mq550:text-[1.30rem] mq550:leading-[1.60rem]">
+                  MAXIMUM VALUE CAPTURE
+                </h2>
+              </motion.div>
+
+              <motion.i
+                style={{ opacity: text4Opacity }}
+                className="relative leading-[2rem] text-[1.25rem] mq550:text-[0.90rem] mq550:leading-[1.25rem]"
               >
                 by optimizing processes & managing change right through the solution lifecycle
               </motion.i>
-            </motion.div>
-            <motion.i
-              className="relative leading-[2.5rem] z-[2] mq550:text-[1.188rem] mq550:leading-[2rem]"
-              variants={textVariants}
-            >
-              These services detail how our proven team can partner you in capturing maximum value by tapping on our extensive experience in building, operating & consulting tech teams.
-            </motion.i>
-          </motion.div>
-        </div>
+
+              <motion.i
+                style={{ opacity: text5Opacity }}
+                className="relative leading-[2rem] text-[1.25rem] mq550:text-[0.90rem] mq550:leading-[1.25rem]"
+              >
+                These services detail how our proven team can partner you in capturing maximum value by tapping on our extensive experience in building, operating & consulting tech teams.
+              </motion.i>
+            </div>
+          </div>
+        </motion.div>
       </div>
-      <Image
-        className="w-full h-[40.75rem] absolute !m-[0] top-[38.75rem] right-[0rem] left-[0rem] 
-          max-w-full overflow-hidden shrink-0 object-cover z-[1] mq400:h-[50rem]"
-        width={1440}
-        height={652}
-        alt=""
-        src="/screenshot-20241023-231953-1@2x.png"
-      />
-      <DigitalTranspormationRoadmap />
-      <Footer />
+
+      <div className="mt-[-18vh] w-full">
+        <div className="max-w-[1536px] mx-auto">
+          <DigitalTranspormationRoadmap />
+        </div>
+        <Footer />
+      </div>
     </div>
   );
 };

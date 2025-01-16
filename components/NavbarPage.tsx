@@ -141,7 +141,7 @@ const NavbarPage: NextPage<NavbarPageType> = ({ className = "" }) => {
           mq450:px-[0.5rem] "
       >
         <header className="flex-1 flex flex-row items-center justify-between max-w-full gap-[1.25rem] text-left text-[1rem] text-white font-archivo relative navbar mt-[-1rem] header-navbar">
-          <div className={`flex items-center mt-[-5px] relative`}>
+          <div className={`flex items-center relative`}>
             <a href="/">
               <Image
                 className="h-[1.469rem] relative max-w-[15rem] overflow-hidden shrink-0 cursor-pointer z-[1] mq900:ml-[1px]"
