@@ -387,14 +387,14 @@ const NavbarPage: NextPage<NavbarPageType> = ({ className = "" }) => {
                     <div className="mt-4 flex flex-col items-center gap-[1rem]">
                       <a
                         style={{ textDecoration: "none" }}
-                        href="/services-advisory"
+                        href="/service/advisory"
                         className="text-white hover:text-gray-300 text-[1rem]"
                       >
                         Advisory
                       </a>
                       <a
                         style={{ textDecoration: "none" }}
-                        href="/ServicesImplementation"
+                        href="/service/implementation"
                         className="text-white hover:text-gray-300 text-[1rem]"
                       >
                         Implementation
