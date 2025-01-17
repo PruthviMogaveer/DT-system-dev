@@ -55,25 +55,25 @@ const ChooseUs: NextPage<ChooseUsType> = ({ className = "" }) => {
       className={`choose-us-section self-stretch flex flex-row items-start justify-center pt-[0rem] px-[4.375rem] pb-[1rem] box-border text-left text-[3.375rem] text-gray-200 font-archivo mq800:pl-[2.188rem] mq800:pr-[2.188rem] mq800:box-border ${className} mq800:mt-[-2rem] mt-[-2rem] mq450:mt-[-0.5rem] mq900:p-[1.5rem]`}
     >
 <div className="max-w-[1536px] self-stretch flex flex-row items-start justify-start box-border text-left text-[3.375rem] text-gray-200 font-archivo mq800:box-border">
-      <div className="flex-1 flex flex-row items-center justify-between gap-[4rem] max-w-full mq800:gap-[2.625rem] mq450:gap-[1.313rem] mq1350:gap-[4rem] mq1350:flex-wrap mq1050:flex-col">
-        <div className="flex-1 flex flex-col items-start justify-start gap-[1rem] min-w-[24.438rem] max-w-full mq800:min-w-full mt-[2rem] mq1050:mt-[2rem] mq1050:min-w-[100%] mq1050:items-center">
+      <div className="flex-1 flex flex-row items-center justify-between gap-[6rem] max-w-full mq800:gap-[1.5rem] mq450:gap-[1rem] mq1350:gap-[2rem] mq1350:flex-wrap mq1050:flex-col">
+        <div className="w-[50%] flex flex-col items-start justify-start gap-[1rem] min-w-[24.438rem] max-w-full mq800:min-w-full mt-[2rem] mq1050:mt-[2rem] mq1050:min-w-[100%] mq1050:items-center">
           <h1 className="m-0 relative text-inherit leading-[120%] capitalize font-bold font-inherit inline-block max-w-full mq800:text-[2.688rem] mq800:leading-[3.25rem] mq450:text-[2rem] mq450:leading-[2.438rem] mq800:text-center">
             Why Choose Us
           </h1>
           <div className="relative text-[1.125rem] leading-[1.875rem] text-color-6 mq1050:flex mq1050:flex-col mq1050:items-center mq1050:justify-center mq1050:text-center">
-            <p className="m-0 w-[80%] mq800:w-[100%]">
+            <p className="m-0 w-[100%] mq800:w-[100%]">
               DT Systems is a pure play ServiceNow partner in Southeast Asia
               with a sole focus on delivering maximum value capture for our
               enterprise customers. ServiceNow is an automated workflow solution
               that bridges the gap across multiple platforms.
             </p>
             <p className="m-0">&nbsp;</p>
-            <p className="m-0 w-[80%] mq800:w-[100%]">{`We are a proven team with unparalleled expertise in Technology Operations, Full Stack App Development, Product Management, Customer Success, COE Operations, and Management & Process Consulting. ​​Our certified ServiceNow architects, developers, consultants, project managers, will deliver innovative frictionless solutions that enhance the ServiceNow experience.`}</p>
+            <p className="m-0 w-[100%] mq800:w-[100%]">{`We are a proven team with unparalleled expertise in Technology Operations, Full Stack App Development, Product Management, Customer Success, COE Operations, and Management & Process Consulting. ​​Our certified ServiceNow architects, developers, consultants, project managers, will deliver innovative frictionless solutions that enhance the ServiceNow experience.`}</p>
           </div>
         </div>
 
         {/* Animation Items */}
-        <div className="w-[33.25rem] flex flex-row items-end justify-start gap-[1.5rem] max-w-full text-[2rem] text-color-6 mq800:flex-wrap mq800:min-w-full mq1350:flex-1">
+        <div className="w-[50%] flex flex-row items-end justify-start gap-[1.5rem] max-w-full text-[2rem] text-color-6 mq800:flex-wrap mq800:min-w-full mq1050:min-w-[70%] mq1350:flex-1">
           <div className="flex flex-col items-start justify-end pt-[0rem] px-[0rem] pb-[0.375rem] pl-[2rem] mq900:pl-[1rem]">
             {/* First Item */}
             <motion.div
