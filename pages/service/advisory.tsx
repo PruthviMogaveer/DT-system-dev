@@ -14,6 +14,7 @@ const ServicesAdvisory: NextPage = () => {
   const [isInView, setIsInView] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [containerHeight, setContainerHeight] = useState("150vh");
+  const [isRevealComplete, setIsRevealComplete] = useState(false);
 
   const onDTSYSTEMSClick = useCallback(() => {
     router.push("/home");
@@ -21,7 +22,7 @@ const ServicesAdvisory: NextPage = () => {
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start start", "end end"],
+    offset: ["start center", "end center"], // Changed offset to use center
   });
 
   useEffect(() => {
@@ -30,17 +31,26 @@ const ServicesAdvisory: NextPage = () => {
 
       const rect = containerRef.current.getBoundingClientRect();
       const containerHeight = containerRef.current.clientHeight;
-      const scrollPoint = window.innerHeight;
+      const windowHeight = window.innerHeight;
+      const middleOfScreen = windowHeight / 2;
 
-      // Calculate scroll progress through the section
+      // Calculate progress based on middle of screen
       const progress = Math.min(
-        Math.max(-rect.top / (containerHeight - scrollPoint), 0),
+        Math.max(
+          (middleOfScreen - rect.top) / (containerHeight - windowHeight/2),
+          0
+        ),
         1
       );
       setScrollProgress(progress);
 
-      // Determine when to fix/unfix the section
-      if (rect.top <= 0 && -rect.top < containerHeight - scrollPoint) {
+      // Update reveal completion status
+      if (progress >= 0.95) {
+        setIsRevealComplete(true);
+      }
+
+      // Fix position when section hits top until reveals complete
+      if (rect.top <= 0 && !isRevealComplete) {
         setIsInView(true);
       } else {
         setIsInView(false);
@@ -49,11 +59,12 @@ const ServicesAdvisory: NextPage = () => {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isRevealComplete]); // Add isRevealComplete to dependencies
 
   useEffect(() => {
     const updateHeight = () => {
-      setContainerHeight(window.innerWidth >= 768 ? "150vh" : "140vh");
+      // Reduce the container height
+      setContainerHeight(window.innerWidth >= 768 ? "100vh" : "90vh");
     };
 
     updateHeight();
@@ -61,11 +72,12 @@ const ServicesAdvisory: NextPage = () => {
     return () => window.removeEventListener("resize", updateHeight);
   }, []);
 
-  const text1Opacity = useTransform(scrollYProgress, [0, 0.2], [0, 1]);
-  const text2Opacity = useTransform(scrollYProgress, [0.2, 0.4], [0, 1]);
-  const text3Opacity = useTransform(scrollYProgress, [0.4, 0.6], [0, 1]);
-  const text4Opacity = useTransform(scrollYProgress, [0.6, 0.8], [0, 1]);
-  const text5Opacity = useTransform(scrollYProgress, [0.8, 1], [0, 1]);
+  // Adjust the animation triggers to account for middle-screen reveal
+  const text1Opacity = useTransform(scrollYProgress, [0, 0.15], [0, 1]);
+  const text2Opacity = useTransform(scrollYProgress, [0.15, 0.35], [0, 1]);
+  const text3Opacity = useTransform(scrollYProgress, [0.35, 0.55], [0, 1]);
+  const text4Opacity = useTransform(scrollYProgress, [0.55, 0.75], [0, 1]);
+  const text5Opacity = useTransform(scrollYProgress, [0.75, 0.95], [0, 1]);
 
   const translateY = isInView
     ? 0
@@ -93,25 +105,27 @@ const ServicesAdvisory: NextPage = () => {
         ref={containerRef}
         className="w-full relative"
         style={{
-          height: containerHeight,
+          height: isRevealComplete ? "auto" : containerHeight,
+          minHeight: isRevealComplete ? "100vh" : "auto",
           marginTop: "-5rem",
+          paddingBottom: isInView ? "600px" : "0"
         }}
       >
         <motion.div
           className="w-full"
           style={{
-            position: isInView ? "fixed" : "absolute",
+            position: isInView ? "fixed" : "relative",
             top: isInView ? 0 : "auto",
             left: 0,
             right: 0,
             zIndex: 10,
-            transform: `translateY(${translateY}vh)`,
+            opacity: isRevealComplete ? 1 : undefined
           }}
         >
           {/* Add max-width container */}
-          <div className="max-w-[1536px] mx-auto w-full relative h-[600px]">
+          <div className="max-w-[1536px] mx-auto w-screen left-0 absolute h-[600px]">
             <Image
-              className="w-full h-full object-cover"
+              className="w-screen h-full object-cover"
               width={1440}
               height={600}
               alt=""
@@ -171,9 +185,7 @@ const ServicesAdvisory: NextPage = () => {
         </motion.div>
       </div>
 
-      <div className="mt-[-10vh] w-full">
-        {" "}
-        {/* changed from -18vh to -10vh */}
+      <div className="-mt-28  w-full"> 
         <div className="max-w-[1536px] mx-auto">
           <DigitalTranspormationRoadmap />
         </div>
